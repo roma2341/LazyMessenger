@@ -11,7 +11,7 @@
         <module>LazyMessengerAPI</module>
         <module>LazyMessengerImpl</module>
     </modules>
-    <packaging>war</packaging>
+    <packaging>pom</packaging>
     <name>messenger</name>
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
@@ -42,6 +42,17 @@
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>3.1.0</version>
+        </dependency>
+
+        <dependency>
+            <artifactId>LazyMessengerAPI</artifactId>
+            <groupId>com.zigzag.lazy</groupId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.zigzag.lazy</groupId>
+            <artifactId>LazyMessengerImpl</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
 
     </dependencies>
