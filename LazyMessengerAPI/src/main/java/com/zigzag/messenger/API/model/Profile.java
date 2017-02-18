@@ -1,4 +1,4 @@
-package com.zigzag.messenger.API.Model;
+package com.zigzag.messenger.API.model;
 
 import java.util.UUID;
 

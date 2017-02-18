@@ -1,8 +1,8 @@
-package com.zigzag.messanger.Model;
+package com.zigzag.messenger.model;
 
-import com.zigzag.messenger.API.Model.Conversation;
-import com.zigzag.messenger.API.Model.Message;
-import com.zigzag.messenger.API.Model.Profile;
+import com.zigzag.messenger.API.model.Message;
+import com.zigzag.messenger.API.model.Profile;
+import com.zigzag.messenger.API.model.Conversation;
 
 import java.util.Date;
 import java.util.UUID;

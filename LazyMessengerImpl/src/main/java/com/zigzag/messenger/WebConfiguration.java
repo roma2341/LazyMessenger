@@ -1,4 +1,4 @@
-package com.zigzag.messenger.configuration;
+package com.zigzag.messenger;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -11,9 +11,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  */
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = {"com.zigzag.messenger.controllers"},
-        excludeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, value = Configuration.class)
-)
+@ComponentScan
+
 public class WebConfiguration extends WebMvcConfigurerAdapter {
 
 }

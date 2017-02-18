@@ -1,11 +1,11 @@
-package com.zigzag.messenger.configuration;
+package com.zigzag.messenger;
 
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 /**
  * Created by zigza on 11.02.2017.
  */
-
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
     @Override

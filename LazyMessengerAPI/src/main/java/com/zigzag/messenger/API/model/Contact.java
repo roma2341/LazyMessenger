@@ -1,4 +1,4 @@
-package com.zigzag.messenger.API.Model;
+package com.zigzag.messenger.API.model;
 
 /**
  * Created by zigza on 16.02.2017.

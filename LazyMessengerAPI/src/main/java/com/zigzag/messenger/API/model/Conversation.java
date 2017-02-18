@@ -1,6 +1,5 @@
-package com.zigzag.messenger.API.Model;
+package com.zigzag.messenger.API.model;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
