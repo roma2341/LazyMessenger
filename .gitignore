@@ -1,3 +1,8 @@
 target/classes/com/zigzag/messenger/controllers/TestController.class
 .idea/
 target/
+Task/API.xlsx
+LazyMessengerImpl/src/main/webapp/WEB-INF/lib/
+LazyMessengerAPI/src/main/webapp/WEB-INF/classes/
+LazyMessengerImpl/src/main/webapp/WEB-INF/classes/com/zigzag/messenger/WebConfiguration.class
+LazyMessengerImpl/src/main/webapp/WEB-INF/classes/
