@@ -21,6 +21,8 @@
         <maven-war-plugin.version>2.6</maven-war-plugin.version>
         <spring.core.version>4.2.5.RELEASE</spring.core.version>
         <spring.web.version>4.2.5.RELEASE</spring.web.version>
+        <spring.security.version>4.2.1.RELEASE</spring.security.version>
+        <spring.orm.version>4.2.5.RELEASE</spring.orm.version>
     </properties>
 
     <dependencyManagement>

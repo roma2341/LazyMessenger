@@ -4,6 +4,7 @@ import com.zigzag.messenger.API.model.Profile;
 import com.zigzag.messenger.API.model.ProfileSettings;
 import com.zigzag.messenger.API.model.ProfileStatus;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
@@ -12,6 +13,7 @@ import java.util.UUID;
 /**
  * Created by zigza on 20.02.2017.
  */
+@Entity
 public class UserProfile implements Profile {
     @Id
     @GeneratedValue
