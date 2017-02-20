@@ -14,5 +14,6 @@ public interface Conversation {
     public List<Message> getMessages();
     public ConversationDetails getDetails();
     public ConversationSettings getSettings();
+    public String getTitle();
 
 }
