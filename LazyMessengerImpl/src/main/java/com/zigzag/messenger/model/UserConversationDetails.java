@@ -12,7 +12,9 @@ import java.util.UUID;
  */
 @Entity
 public class UserConversationDetails implements ConversationDetails {
+    public UserConversationDetails(){
 
+    }
     @Id
     @GeneratedValue
     private UUID id;

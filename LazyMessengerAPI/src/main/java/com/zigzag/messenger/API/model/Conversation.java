@@ -8,6 +8,7 @@ import java.util.UUID;
  * Created by zigza on 15.02.2017.
  */
 public interface Conversation {
+    public enum ConversationType {INDIVIDUAL_CHAT,GROUP_CHAT,ALL_CHAT};
     public UUID getId();
     public List<Profile> getParticipants();
     public Date getDateCreated();
@@ -15,5 +16,5 @@ public interface Conversation {
     public ConversationDetails getDetails();
     public ConversationSettings getSettings();
     public String getTitle();
-
+    public ConversationType getType();
 }

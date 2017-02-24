@@ -1,13 +1,12 @@
 package com.zigzag.messenger.model;
 
+import com.zigzag.messenger.API.model.Message;
 import com.zigzag.messenger.API.model.Profile;
 import com.zigzag.messenger.API.model.ProfileSettings;
 import com.zigzag.messenger.API.model.ProfileStatus;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -15,15 +14,21 @@ import java.util.UUID;
  */
 @Entity
 public class UserProfile implements Profile {
+    public UserProfile(){
+
+    }
     @Id
     @GeneratedValue
     private UUID id;
 
-    @OneToOne
+    @OneToOne(targetEntity = UserProfileSettings.class)
     ProfileSettings settings;
 
-    @OneToOne
+    @OneToOne(targetEntity = UserProfileStatus.class )
     ProfileStatus status;
+
+    @OneToMany(mappedBy="author",targetEntity = UserMessage.class)
+    List<Message> messages;
 
     @Override
     public UUID getId() {
@@ -38,5 +43,10 @@ public class UserProfile implements Profile {
     @Override
     public ProfileStatus getStatus() {
         return status;
+    }
+
+    @Override
+    public List<Message> getMessages() {
+        return null;
     }
 }

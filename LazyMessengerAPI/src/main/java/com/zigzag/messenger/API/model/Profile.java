@@ -1,5 +1,6 @@
 package com.zigzag.messenger.API.model;
 
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -9,4 +10,5 @@ public interface Profile {
     public UUID getId();
     public ProfileSettings getSettings();
     public ProfileStatus getStatus();
+    public List<Message> getMessages();
 }

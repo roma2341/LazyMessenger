@@ -13,16 +13,19 @@ import java.util.UUID;
  */
 @Entity
 public class UserMessage implements Message {
+    public UserMessage(){
+
+    }
     @Id
     @GeneratedValue
     private UUID id;
 
     String body;
 
-    @ManyToOne
+    @ManyToOne(targetEntity = UserProfile.class)
     Profile author;
 
-    @ManyToOne
+    @ManyToOne(targetEntity = UserConversation.class)
     Conversation conversation;
 
    private Date dateSended;

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Created by zigza on 19.02.2017.
  */
 @RestController
-@RequestMapping(path = "/contacts",
+@RequestMapping(path = "/conversations",
         method = RequestMethod.POST,
         consumes = MediaType.APPLICATION_JSON_VALUE,
         produces = MediaType.APPLICATION_JSON_VALUE)

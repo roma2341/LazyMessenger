@@ -13,6 +13,9 @@ import java.util.UUID;
  */
 @Entity
 public class UserConversationSettings implements ConversationSettings {
+    public UserConversationSettings(){
+
+    }
     @Id
     @GeneratedValue
     private UUID id;

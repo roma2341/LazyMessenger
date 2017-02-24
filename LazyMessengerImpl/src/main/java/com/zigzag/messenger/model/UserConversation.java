@@ -12,20 +12,23 @@ import java.util.UUID;
  */
 @Entity
 public class UserConversation implements Conversation {
+    public UserConversation(){
+
+    }
     @Id
     @GeneratedValue
     private UUID id;
 
-    @ManyToMany
+    @ManyToMany(targetEntity = UserProfile.class)
     private List<Profile> participants;
 
-    @OneToMany(mappedBy = "author")
+    @OneToMany(mappedBy = "author",targetEntity=UserMessage.class)
     private List<Message> messages;
 
-    @OneToOne
+    @OneToOne(targetEntity = UserConversation.class)
     private ConversationDetails conversationDetails;
 
-    @OneToOne
+    @OneToOne(targetEntity = UserConversationSettings.class)
     private ConversationSettings settings;
 
     private Date dateCreated;

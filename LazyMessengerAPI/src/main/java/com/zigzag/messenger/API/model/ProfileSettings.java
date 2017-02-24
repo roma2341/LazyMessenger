@@ -8,7 +8,7 @@ import java.util.UUID;
 public interface ProfileSettings {
 public String getLanguage();
 public String getNickName();
-public String getAge();
+public Integer getAge();
 public String getAvatar();
 public String getSex();
 public UUID getId();
