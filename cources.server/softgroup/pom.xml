@@ -19,6 +19,10 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<spring.core.version>4.2.5.RELEASE</spring.core.version>
+		<spring.orm.version>4.2.5.RELEASE</spring.orm.version>
+
+		<spring.web.version>4.2.5.RELEASE</spring.web.version>
+		<spring.security.version>4.2.1.RELEASE</spring.security.version>
 	</properties>
 
 	<dependencyManagement>

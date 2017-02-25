@@ -14,7 +14,6 @@
 	<modules>
 
 		<module>authorization</module>
-        <module>database</module>
     </modules>
 
 	<properties>
