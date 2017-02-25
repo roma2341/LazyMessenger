@@ -14,7 +14,11 @@
         <dependency>
             <groupId>com.zigzag.lazy</groupId>
             <artifactId>MessengerRouterAPI</artifactId>
-            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.zigzag.lazy</groupId>
+            <artifactId>MessengerAPI</artifactId>
         </dependency>
 
         <dependency>

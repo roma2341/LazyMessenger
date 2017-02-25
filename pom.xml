@@ -8,19 +8,16 @@
     <artifactId>LazyMessenger</artifactId>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>LazyMessengerAPI</module>
-        <module>LazyMessengerImpl</module>
-        <module>messengerprotocol</module>
+        <module>MessengerAPI</module>
+        <module>MessengerImpl</module>
         <module>MessengerProtocol</module>
-        <module>MessengerProtocol</module>
-        <module>MessengerAuthorization</module>
-        <module>MessengerRouter</module>
         <module>MessengerProtocolAPI</module>
         <module>MessengerRouterAPI</module>
         <module>AuthorizationRouter</module>
+        <module>MessengerDataMapper</module>
+        <module>MessengerExceptions</module>
     </modules>
     <packaging>pom</packaging>
-    <name>messenger</name>
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -35,23 +32,6 @@
 
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>com.zigzag.lazy</groupId>
-                <artifactId>LazyMessengerAPI</artifactId>
-                <version>1.0-SNAPSHOT</version>
-            </dependency>
-            <dependency>
-                <groupId>com.zigzag.lazy</groupId>
-                <artifactId>LazyMessengerImpl</artifactId>
-                <version>1.0-SNAPSHOT</version>
-            </dependency>
-
-            <dependency>
-                    <groupId>com.zigzag.lazy</groupId>
-                    <artifactId>LazyMessengerAPI</artifactId>
-                    <version>1.0-SNAPSHOT</version>
-                </dependency>
-
                 <dependency>
                     <groupId>org.springframework</groupId>
                     <artifactId>spring-webmvc</artifactId>
@@ -139,6 +119,24 @@
                     <artifactId>hibernate-entitymanager</artifactId>
                     <version>5.1.3.Final</version>
                 </dependency>
+
+            <dependency>
+                <groupId>com.zigzag.lazy</groupId>
+                <artifactId>MessengerAPI</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.zigzag.lazy</groupId>
+                <artifactId>MessengerImpl</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.zigzag.lazy</groupId>
+                <artifactId>MessengerRouterAPI</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+
 
         </dependencies>
 

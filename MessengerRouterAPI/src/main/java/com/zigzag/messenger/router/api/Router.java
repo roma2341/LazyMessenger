@@ -1,10 +1,10 @@
 package com.zigzag.messenger.router.api;
 
-import com.zigzag.messenger.protocol.api.Request;
+import com.zigzag.messenger.protocol.api.request.Request;
+import com.zigzag.messenger.protocol.api.response.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.PostConstruct;
-import javax.xml.ws.Response;
 import java.util.List;
 import java.util.Map;
 
