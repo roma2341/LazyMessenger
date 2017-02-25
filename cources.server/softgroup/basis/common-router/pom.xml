@@ -27,6 +27,10 @@
 			<groupId>com.softgroup</groupId>
 			<artifactId>common-protocol</artifactId>
 		</dependency>
+        <dependency>
+            <groupId>com.softgroup</groupId>
+            <artifactId>common-utils</artifactId>
+        </dependency>
 
-	</dependencies>
+    </dependencies>
 </project>

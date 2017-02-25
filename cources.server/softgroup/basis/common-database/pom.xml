@@ -10,6 +10,43 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>common-database</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>common-database-api</module>
+        <module>common-database-impl</module>
+    </modules>
 
+    <dependencies>
+    <dependency>
+        <groupId>org.hibernate.javax.persistence</groupId>
+        <artifactId>hibernate-jpa-2.0-api</artifactId>
+    </dependency>
+
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-orm</artifactId>
+    </dependency>
+
+    <dependency>
+        <groupId>org.springframework.data</groupId>
+        <artifactId>spring-data-jpa</artifactId>
+    </dependency>
+
+    <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+    </dependency>
+
+    <dependency>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-core</artifactId>
+    </dependency>
+
+    <dependency>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-entitymanager</artifactId>
+    </dependency>
+
+    </dependencies>
 
 </project>
