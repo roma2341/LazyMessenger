@@ -2,7 +2,7 @@ package com.softgroup.common.protocol;
 
 import java.io.Serializable;
 
-public class Action<T extends Serializable> implements Serializable {
+public class Action<T extends RequestData> implements Serializable {
 
 	private static final long serialVersionUID = 3373910816445037302L;
 
