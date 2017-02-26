@@ -5,12 +5,14 @@ import com.softgroup.common.router.api.AbstractHandlerFactory;
 import com.softgroup.common.router.api.AbstractRouterHandler;
 import com.softgroup.common.router.api.CommonRouterHandler;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 /**
  * Created by zigza on 26.02.2017.
  */
+@Component
 public class DispatcherHandlerFactory extends AbstractHandlerFactory<CommonRouterHandler> {
     @Override
     protected String getCommand(Request<?> msg) {

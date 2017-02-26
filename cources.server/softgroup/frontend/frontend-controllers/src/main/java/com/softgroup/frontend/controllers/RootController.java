@@ -5,6 +5,9 @@ package com.softgroup.frontend.controllers;
  */
 
 import com.softgroup.common.datamapper.JacksonDataMapper;
+import com.softgroup.common.protocol.ActionHeader;
+import com.softgroup.common.protocol.CommonRequest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -25,6 +28,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by zigza on 25.02.2017.
@@ -33,12 +38,14 @@ import java.nio.charset.StandardCharsets;
 @RequestMapping(path = "/root",
         method = RequestMethod.POST)
 public class RootController {
+    @Autowired
+    DispatcherRouter dispatcher;
+
     @RequestMapping(path = "/router")
     public Response publicMessage(@RequestBody final String requestStr) {
         InputStream stream = new ByteArrayInputStream(requestStr.getBytes(StandardCharsets.UTF_8));
         JacksonDataMapper dataMapper = new JacksonDataMapper();
-        Request request = dataMapper.readValue(stream,Request.class);
-        DispatcherRouter dispatcher = new DispatcherRouter();
+        CommonRequest request = dataMapper.readValue(stream,CommonRequest.class);
         return dispatcher.handle(request);
     }
 }
