@@ -13,9 +13,7 @@ import java.util.Map;
 
 public abstract class AbstractRequestHandler<T extends RequestData, R extends ResponseData> implements RequestHandler {
 	@Override
-	public String getName() {
-		return null;
-	}
+	public abstract String getName();
 
 	@Override
 	public Response<R> handle(Request<?> msg) {
@@ -27,7 +25,8 @@ public abstract class AbstractRequestHandler<T extends RequestData, R extends Re
 		ParameterizedType type = (ParameterizedType) currentClass.getGenericSuperclass();
 		Class parameter = (Class) type.getActualTypeArguments()[0];
 		T data = mapper.convert((Map<String,Object>)msg.getData(),(Class<T>)parameter);*/
-		T data = CommonReflectionUtils.getGenericParameterClass(this.getClass(), 0);
+		Class dataClass = CommonReflectionUtils.getGenericParameterClass(this.getClass(), 0);
+		T data = mapper.convert((Map<String,Object>)msg.getData(),(Class<T>)dataClass);
 		request.setData(data);
 		return process(request);
 	}

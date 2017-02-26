@@ -14,6 +14,11 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class RegistrationRequestHandler extends AbstractRequestHandler<RegistrationRequestData,RegistrationResponseData> implements AuthorizationRequestHandler {
+    @Override
+    public String getName() {
+        return "register";
+    }
+
     public Response<RegistrationResponseData> process(Request<RegistrationRequestData> request) {
         //TODO
         RegistrationResponseData data = new RegistrationResponseData();

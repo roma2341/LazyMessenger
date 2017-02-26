@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  * Created by zigza on 25.02.2017.
  */
 @Component
-public class AuthorizationRouter<T extends RegistrationRequestHandler> extends AbstractRouterHandler<T>  {
+public class AuthorizationRouter<T extends RegistrationRequestHandler> extends AbstractRouterHandler<T> implements CommonRouterHandler  {
 
     public String getName() {
         return "authorization";

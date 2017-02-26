@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class DispatcherRouter {
 
+    @Autowired
     DispatcherHandlerFactory handlerFactory;
     protected AbstractHandlerFactory getHandlerFactory(){
         return handlerFactory;
