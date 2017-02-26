@@ -1,9 +1,9 @@
 package com.softgroup.common.database.impl.model;
 
-import com.zigzag.messenger.API.model.Message;
-import com.zigzag.messenger.API.model.Profile;
-import com.zigzag.messenger.API.model.ProfileSettings;
-import com.zigzag.messenger.API.model.ProfileStatus;
+import com.softgroup.common.database.api.model.Message;
+import com.softgroup.common.database.api.model.Profile;
+import com.softgroup.common.database.api.model.ProfileSettings;
+import com.softgroup.common.database.api.model.ProfileStatus;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;

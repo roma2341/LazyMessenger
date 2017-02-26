@@ -1,6 +1,6 @@
 package com.softgroup.common.database.impl.model;
 
-import com.zigzag.messenger.API.model.ProfileSettings;
+import com.softgroup.common.database.api.model.ProfileSettings;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Column;

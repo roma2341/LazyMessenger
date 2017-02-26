@@ -16,7 +16,6 @@
         <module>common-protocol</module>
         <module>common-database</module>
         <module>common-utils</module>
-        <module>common-router-dispatcher</module>
 
     </modules>
 

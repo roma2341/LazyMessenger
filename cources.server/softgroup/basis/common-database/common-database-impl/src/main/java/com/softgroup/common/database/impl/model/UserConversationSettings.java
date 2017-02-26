@@ -1,6 +1,6 @@
 package com.softgroup.common.database.impl.model;
 
-import com.zigzag.messenger.API.model.ConversationSettings;
+import com.softgroup.common.database.api.model.ConversationSettings;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Column;
@@ -22,7 +22,6 @@ public class UserConversationSettings implements ConversationSettings {
     @Column(name = "id", unique = true)
     private String id;
 
-    @Override
     public String getId() {
         return id;
     }

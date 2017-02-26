@@ -20,9 +20,11 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<spring.core.version>4.2.5.RELEASE</spring.core.version>
 		<spring.orm.version>4.2.5.RELEASE</spring.orm.version>
-
 		<spring.web.version>4.2.5.RELEASE</spring.web.version>
 		<spring.security.version>4.2.1.RELEASE</spring.security.version>
+
+		<maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
+		<maven-war-plugin.version>2.6</maven-war-plugin.version>
 	</properties>
 
 	<dependencyManagement>
@@ -38,25 +40,49 @@
 			<dependency>
 				<groupId>com.softgroup</groupId>
 				<artifactId>common-router</artifactId>
-				<version>0.0.1</version>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.softgroup</groupId>
+				<artifactId>frontend-controllers</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.softgroup</groupId>
+				<artifactId>frontend</artifactId>
+				<version>${project.version}</version>
 			</dependency>
 
 			<dependency>
 				<groupId>com.softgroup</groupId>
 				<artifactId>routers-dispatcher-impl</artifactId>
-				<version>0.0.1</version>
+				<version>${project.version}</version>
 			</dependency>
 
 			<dependency>
 				<groupId>com.softgroup</groupId>
 				<artifactId>common-utils</artifactId>
-				<version>0.0.1</version>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.softgroup</groupId>
+				<artifactId>common-configurator</artifactId>
+				<version>${project.version}</version>
 			</dependency>
 
 			<dependency>
 				<artifactId>common-database-api</artifactId>
 				<groupId>com.softgroup</groupId>
-				<version>0.0.1</version>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.zaxxer</groupId>
+				<artifactId>HikariCP</artifactId>
+				<version>2.6.0</version>
 			</dependency>
 
 			<dependency>
@@ -271,5 +297,35 @@
 			<artifactId>spring-test</artifactId>
 		</dependency>
 	</dependencies>
+
+
+	<build>
+		<plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin.version}</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>${maven-war-plugin.version}</version>
+				<configuration>
+					<attachClasses>true</attachClasses>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+					<warName>messenger</warName>
+				</configuration>
+			</plugin>
+
+		</plugins>
+
+
+	</build>
 
 </project>
