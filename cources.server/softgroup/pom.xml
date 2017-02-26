@@ -45,6 +45,12 @@
 
 			<dependency>
 				<groupId>com.softgroup</groupId>
+				<artifactId>authorization-impl</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.softgroup</groupId>
 				<artifactId>frontend-controllers</artifactId>
 				<version>${project.version}</version>
 			</dependency>

@@ -4,7 +4,14 @@ package com.softgroup.frontend.controllers;
  * Created by zigza on 26.02.2017.
  */
 
+import com.softgroup.common.datamapper.JacksonDataMapper;
 import org.springframework.web.bind.annotation.RestController;
+
+/**
+ * Created by zigza on 26.02.2017.
+ */
+
+        import org.springframework.web.bind.annotation.RestController;
 
         import com.softgroup.common.protocol.Request;
         import com.softgroup.common.protocol.Response;
@@ -15,18 +22,23 @@ import org.springframework.web.bind.annotation.RestController;
         import org.springframework.web.bind.annotation.RequestMethod;
         import org.springframework.web.bind.annotation.RestController;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+
 /**
  * Created by zigza on 25.02.2017.
  */
 @RestController
-@RequestMapping(path = "/",
-        method = RequestMethod.POST,
-        consumes = MediaType.APPLICATION_JSON_VALUE,
-        produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path = "/root",
+        method = RequestMethod.POST)
 public class RootController {
-    @RequestMapping(path = "/")
-    public Response publicMessage(@RequestBody final Request command) {
+    @RequestMapping(path = "/router")
+    public Response publicMessage(@RequestBody final String requestStr) {
+        InputStream stream = new ByteArrayInputStream(requestStr.getBytes(StandardCharsets.UTF_8));
+        JacksonDataMapper dataMapper = new JacksonDataMapper();
+        Request request = dataMapper.readValue(stream,Request.class);
         DispatcherRouter dispatcher = new DispatcherRouter();
-        return dispatcher.handle(command);
+        return dispatcher.handle(request);
     }
 }

@@ -5,15 +5,14 @@ import com.softgroup.common.protocol.Response;
 import com.softgroup.common.router.factory.RequestHandlerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public abstract class AbstractRouterHandler<T extends Handler> implements RouterHandler {
+public abstract class AbstractRouterHandler<T extends RequestHandler> implements RouterHandler {
 
 	@Autowired
 	RequestHandlerFactory<T> requestHandlerFactory;
 
-	 protected HandlerFactory getHandlerFactory(){
+	 protected AbstractHandlerFactory getHandlerFactory(){
 		return requestHandlerFactory;
 	}
-
 	@Override
 	public String getRouteKey(Request<?> msg){
 		return msg.getHeader().getCommand();

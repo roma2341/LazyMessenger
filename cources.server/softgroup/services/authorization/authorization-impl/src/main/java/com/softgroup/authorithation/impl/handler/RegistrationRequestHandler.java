@@ -7,10 +7,12 @@ import com.softgroup.common.protocol.Request;
 import com.softgroup.common.protocol.Response;
 import com.softgroup.common.protocol.ResponseStatus;
 import com.softgroup.common.router.api.AbstractRequestHandler;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by zigza on 25.02.2017.
  */
+@Component
 public class RegistrationRequestHandler extends AbstractRequestHandler<RegistrationRequestData,RegistrationResponseData> implements AuthorizationRequestHandler {
     public Response<RegistrationResponseData> process(Request<RegistrationRequestData> request) {
         //TODO

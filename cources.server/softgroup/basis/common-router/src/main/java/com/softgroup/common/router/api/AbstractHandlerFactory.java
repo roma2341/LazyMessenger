@@ -11,23 +11,21 @@ import java.util.Map;
 /**
  * Created by zigza on 25.02.2017.
  */
-public abstract class AbstractHandlerFactory<T extends Handler> implements HandlerFactory {
-    @Autowired
+public abstract class AbstractHandlerFactory<T extends Handler> {
     List<T> handlers;
-
     Map<String,T> handlersMap = new HashMap<String,T>();
+    protected abstract List<T>  getHandlers();
 
     @PostConstruct
     public void init(){
-        for (T handler : handlers){
+        for (T handler : getHandlers()){
             handlersMap.put(handler.getName(),handler);
         }
     }
     protected abstract String getCommand(Request<?> msg);
 
-    @Override
     public T getHandler(Request msg) {
-        String command = msg.getHeader().getCommand();
+        String command = getCommand(msg);
         T handler = handlersMap.get(command);
         return handler;
     }

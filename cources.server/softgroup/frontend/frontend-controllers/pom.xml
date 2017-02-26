@@ -49,6 +49,10 @@
             <artifactId>javax.servlet-api</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.softgroup</groupId>
+            <artifactId>authorization-impl</artifactId>
+        </dependency>
 
 
     </dependencies>

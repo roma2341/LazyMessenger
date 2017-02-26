@@ -11,9 +11,7 @@ import com.softgroup.common.protocol.ResponseData;
 public abstract class AbstractHandler<T extends RequestData, R extends ResponseData> implements Handler {
 
     @Override
-    public String getName() {
-        return null;
-    }
+    public abstract String getName();
 
     @Override
     public Response<?> handle(Request<?> msg) {
