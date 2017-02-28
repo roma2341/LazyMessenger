@@ -1,8 +1,8 @@
 package com.softgroup.authorithation.impl.handler;
 
+import com.softgroup.services.authorization.api.handler.AuthorizationHandler;
 import com.softgroup.services.authorization.api.message.request.SmsConfirmRequestData;
 import com.softgroup.services.authorization.api.message.response.SmsConfirmResponseData;
-import com.softgroup.services.authorization.api.router.AuthorizationRequestHandler;
 import com.softgroup.common.protocol.Request;
 import com.softgroup.common.protocol.Response;
 import com.softgroup.common.protocol.ResponseStatus;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
  * Created by zigza on 28.02.2017.
  */
 @Component
-public class SmsConfirmRequestHandler  extends AbstractRequestHandler<SmsConfirmRequestData,SmsConfirmResponseData> implements AuthorizationRequestHandler {
+public class SmsConfirmRequestHandler  extends AbstractRequestHandler<SmsConfirmRequestData,SmsConfirmResponseData> implements AuthorizationHandler {
     @Override
     public String getName() {
         return "sms_confirm";

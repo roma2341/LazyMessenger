@@ -1,8 +1,8 @@
 package com.softgroup.authorithation.impl.handler;
 
+import com.softgroup.services.authorization.api.handler.AuthorizationHandler;
 import com.softgroup.services.authorization.api.message.request.RegistrationRequestData;
 import com.softgroup.services.authorization.api.message.response.RegistrationResponseData;
-import com.softgroup.services.authorization.api.router.AuthorizationRequestHandler;
 import com.softgroup.common.database.services.UserProfileService;
 import com.softgroup.common.protocol.Request;
 import com.softgroup.common.protocol.Response;
@@ -17,7 +17,7 @@ import java.util.UUID;
  * Created by zigza on 25.02.2017.
  */
 @Component
-public class RegistrationRequestHandler extends AbstractRequestHandler<RegistrationRequestData,RegistrationResponseData> implements AuthorizationRequestHandler {
+public class RegistrationRequestHandler extends AbstractRequestHandler<RegistrationRequestData,RegistrationResponseData> implements AuthorizationHandler {
     @Autowired
     UserProfileService userProfileService;
 
