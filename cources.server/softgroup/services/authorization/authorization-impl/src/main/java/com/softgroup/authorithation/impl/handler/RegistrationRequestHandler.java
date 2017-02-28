@@ -1,7 +1,7 @@
 package com.softgroup.authorithation.impl.handler;
 
-import com.softgroup.authorization.api.message.RegistrationRequestData;
-import com.softgroup.authorization.api.message.RegistrationResponseData;
+import com.softgroup.authorization.api.message.request.RegistrationRequestData;
+import com.softgroup.authorization.api.message.response.RegistrationResponseData;
 import com.softgroup.authorization.api.router.AuthorizationRequestHandler;
 import com.softgroup.common.database.services.UserProfileService;
 import com.softgroup.common.protocol.Request;

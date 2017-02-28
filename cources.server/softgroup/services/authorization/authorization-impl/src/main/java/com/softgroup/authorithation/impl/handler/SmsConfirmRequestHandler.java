@@ -1,7 +1,7 @@
 package com.softgroup.authorithation.impl.handler;
 
-import com.softgroup.authorization.api.message.SmsConfirmRequestData;
-import com.softgroup.authorization.api.message.SmsConfirmResponseData;
+import com.softgroup.authorization.api.message.request.SmsConfirmRequestData;
+import com.softgroup.authorization.api.message.response.SmsConfirmResponseData;
 import com.softgroup.authorization.api.router.AuthorizationRequestHandler;
 import com.softgroup.common.protocol.Request;
 import com.softgroup.common.protocol.Response;
