@@ -10,6 +10,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>profile-api</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>com.softgroup</groupId>
+            <artifactId>common-database</artifactId>
+        </dependency>
+    </dependencies>
 
 
 </project>
