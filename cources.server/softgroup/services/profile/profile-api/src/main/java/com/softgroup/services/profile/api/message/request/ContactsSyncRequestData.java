@@ -1,13 +1,14 @@
 package com.softgroup.services.profile.api.message.request;
 
 import com.softgroup.common.database.model.UserContact;
+import com.softgroup.common.protocol.RequestData;
 
 import java.util.List;
 
 /**
  * Created by zigza on 28.02.2017.
  */
-public class ContactsSyncRequestData {
+public class ContactsSyncRequestData implements RequestData {
     public List<UserContact> getAddedContacts() {
         return addedContacts;
     }
