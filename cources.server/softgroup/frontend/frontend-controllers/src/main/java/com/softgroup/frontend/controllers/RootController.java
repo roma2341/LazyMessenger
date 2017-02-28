@@ -41,11 +41,12 @@ public class RootController {
     @Autowired
     DispatcherRouter dispatcher;
 
+    @Autowired
+    JacksonDataMapper dataMapper;
+
     @RequestMapping(path = "/router")
     public Response publicMessage(@RequestBody final String requestStr) {
-        InputStream stream = new ByteArrayInputStream(requestStr.getBytes(StandardCharsets.UTF_8));
-        JacksonDataMapper dataMapper = new JacksonDataMapper();
-        CommonRequest request = dataMapper.readValue(stream,CommonRequest.class);
+        CommonRequest request = dataMapper.mapData(requestStr.getBytes(StandardCharsets.UTF_8),CommonRequest.class);
         return dispatcher.handle(request);
     }
 }

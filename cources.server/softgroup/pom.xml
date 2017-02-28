@@ -23,6 +23,10 @@
 		<spring.web.version>4.2.5.RELEASE</spring.web.version>
 		<spring.security.version>4.2.1.RELEASE</spring.security.version>
 
+		<hibernate.version>4.3.11.Final</hibernate.version>
+
+
+
 		<maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
 		<maven-war-plugin.version>2.6</maven-war-plugin.version>
 	</properties>
@@ -30,6 +34,18 @@
 	<dependencyManagement>
 		<dependencies>
 			<!-- COMMON -->
+
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>1.7.21</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-log4j12</artifactId>
+				<version>1.7.5</version>
+			</dependency>
 
 			<dependency>
 				<groupId>org.springframework</groupId>
@@ -40,6 +56,18 @@
 			<dependency>
 				<groupId>com.softgroup</groupId>
 				<artifactId>common-router</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.softgroup</groupId>
+				<artifactId>profile-api</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.softgroup</groupId>
+				<artifactId>profile-impl</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 
@@ -80,8 +108,14 @@
 			</dependency>
 
 			<dependency>
-				<artifactId>common-database-api</artifactId>
 				<groupId>com.softgroup</groupId>
+				<artifactId>common-database</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.softgroup</groupId>
+				<artifactId>common-configuration</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 
@@ -118,13 +152,13 @@
 			<dependency>
 				<groupId>org.hibernate</groupId>
 				<artifactId>hibernate-core</artifactId>
-				<version>5.1.3.Final</version>
+				<version>${hibernate.version}</version>
 			</dependency>
 
 			<dependency>
 				<groupId>org.hibernate</groupId>
 				<artifactId>hibernate-entitymanager</artifactId>
-				<version>5.1.3.Final</version>
+				<version>${hibernate.version}</version>
 			</dependency>
 
 

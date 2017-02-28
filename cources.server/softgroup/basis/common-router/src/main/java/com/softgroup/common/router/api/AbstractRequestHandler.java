@@ -7,11 +7,15 @@ import com.softgroup.common.protocol.RequestData;
 import com.softgroup.common.protocol.Response;
 import com.softgroup.common.protocol.ResponseData;
 import com.softgroup.common.utils.CommonReflectionUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.Map;
 
 public abstract class AbstractRequestHandler<T extends RequestData, R extends ResponseData> implements RequestHandler {
+
+	@Autowired
+	JacksonDataMapper mapper;
 	@Override
 	public abstract String getName();
 
@@ -19,12 +23,6 @@ public abstract class AbstractRequestHandler<T extends RequestData, R extends Re
 	public Response<R> handle(Request<?> msg) {
 		Request<T> request = new Request<T>();
 		request.setHeader(msg.getHeader());
-		JacksonDataMapper mapper = new JacksonDataMapper();
-
-		/*Class currentClass = this.getClass();
-		ParameterizedType type = (ParameterizedType) currentClass.getGenericSuperclass();
-		Class parameter = (Class) type.getActualTypeArguments()[0];
-		T data = mapper.convert((Map<String,Object>)msg.getData(),(Class<T>)parameter);*/
 		Class dataClass = CommonReflectionUtils.getGenericParameterClass(this.getClass(), 0);
 		T data = mapper.convert((Map<String,Object>)msg.getData(),(Class<T>)dataClass);
 		request.setData(data);
