@@ -11,6 +11,8 @@ import com.softgroup.common.router.api.AbstractRequestHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.UUID;
+
 /**
  * Created by zigza on 25.02.2017.
  */
@@ -25,12 +27,13 @@ public class RegistrationRequestHandler extends AbstractRequestHandler<Registrat
     }
 
     public Response<RegistrationResponseData> process(Request<RegistrationRequestData> request) {
-        //TODO
+        //TODO get to know what must be returned in fields
         RegistrationRequestData requestData = request.getData();
         userProfileService.register(requestData.getPhoneNumber(),requestData.getLocaleCode(),requestData.getDeviceId());
 
         RegistrationResponseData responseData = new RegistrationResponseData();
-        responseData.setAuthCode("not set");
+       String authCode = UUID.randomUUID().toString();
+        responseData.setAuthCode(authCode);
         responseData.setRegistrationRequestUuid("not set");
         responseData.setRegistrationTimeoutSec(-1);
         Response<RegistrationResponseData> response = new Response<RegistrationResponseData>();
