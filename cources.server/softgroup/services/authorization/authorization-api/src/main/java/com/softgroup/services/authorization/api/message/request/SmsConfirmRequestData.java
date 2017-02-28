@@ -1,4 +1,4 @@
-package com.softgroup.authorization.api.message.request;
+package com.softgroup.services.authorization.api.message.request;
 
 import com.softgroup.common.protocol.RequestData;
 
