@@ -27,14 +27,14 @@ public class ContactsSyncRequestHandler extends AbstractRequestHandler<ContactsS
     }
 
     public Response<ContactsSyncResponseData> process(Request<ContactsSyncRequestData> request) {
-        //TODO get to know what must be returned in fields
         ContactsSyncRequestData requestData = request.getData();
 
         ContactsSyncResponseData responseData = new ContactsSyncResponseData();
-        String authCode = UUID.randomUUID().toString();
         Response<ContactsSyncResponseData> response = new Response<ContactsSyncResponseData>();
+
         response.setHeader(request.getHeader());
         response.setData(responseData);
+
         ResponseStatus status = new ResponseStatus();
         status.setCode(200);
         status.setMessage("Rock !!!!");

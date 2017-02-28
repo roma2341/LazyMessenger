@@ -32,16 +32,19 @@ public class RegistrationRequestHandler extends AbstractRequestHandler<Registrat
         userProfileService.register(requestData.getPhoneNumber(),requestData.getLocaleCode(),requestData.getDeviceId());
 
         RegistrationResponseData responseData = new RegistrationResponseData();
-       String authCode = UUID.randomUUID().toString();
+        String authCode = UUID.randomUUID().toString();
         responseData.setAuthCode(authCode);
         responseData.setRegistrationRequestUuid("not set");
         responseData.setRegistrationTimeoutSec(-1);
+
         Response<RegistrationResponseData> response = new Response<RegistrationResponseData>();
         response.setHeader(request.getHeader());
         response.setData(responseData);
+
         ResponseStatus status = new ResponseStatus();
         status.setCode(200);
         status.setMessage("OFIGENNO !!!!");
+
         response.setStatus(status);
 
         return response;

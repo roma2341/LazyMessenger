@@ -23,12 +23,15 @@ public class SmsConfirmRequestHandler  extends AbstractRequestHandler<SmsConfirm
     public Response<SmsConfirmResponseData> process(Request<SmsConfirmRequestData> request) {
        SmsConfirmResponseData responseData = new  SmsConfirmResponseData();
         responseData.setDeviceToken("not set");
+
         Response<SmsConfirmResponseData> response = new Response<SmsConfirmResponseData>();
         response.setHeader(request.getHeader());
         response.setData(responseData);
+
         ResponseStatus status = new ResponseStatus();
         status.setCode(200);
         status.setMessage("Rock !!!!");
+
         response.setStatus(status);
         return response;
     }
