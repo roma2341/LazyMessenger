@@ -6,31 +6,29 @@ import com.softgroup.common.protocol.Response;
 import com.softgroup.common.protocol.ResponseStatus;
 import com.softgroup.common.router.api.AbstractRequestHandler;
 import com.softgroup.services.profile.api.handler.ProfileHandler;
-import com.softgroup.services.profile.api.message.request.ContactsSyncRequestData;
-import com.softgroup.services.profile.api.message.response.ContactsSyncResponseData;
+import com.softgroup.services.profile.api.message.request.SetMyProfileRequestData;
+import com.softgroup.services.profile.api.message.response.SetMyProfileResponseData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import java.util.UUID;
 
 /**
  * Created by zigza on 28.02.2017.
  */
 @Component
-public class ContactsSyncRequestHandler extends AbstractRequestHandler<ContactsSyncRequestData,ContactsSyncResponseData> implements ProfileHandler {
+public class SetMyProfileRequestHandler extends AbstractRequestHandler<SetMyProfileRequestData,SetMyProfileResponseData> implements ProfileHandler {
     @Autowired
     UserProfileService userProfileService;
 
     @Override
     public String getName() {
-        return "contacts_sync";
+        return "set_my_profile_request";
     }
 
-    public Response<ContactsSyncResponseData> process(Request<ContactsSyncRequestData> request) {
-        ContactsSyncRequestData requestData = request.getData();
+    public Response<SetMyProfileResponseData> process(Request<SetMyProfileRequestData> request) {
+        SetMyProfileRequestData requestData = request.getData();
 
-        ContactsSyncResponseData responseData = new ContactsSyncResponseData();
-        Response<ContactsSyncResponseData> response = new Response<ContactsSyncResponseData>();
+        SetMyProfileResponseData responseData = new SetMyProfileResponseData();
+        Response<SetMyProfileResponseData> response = new Response<SetMyProfileResponseData>();
 
         response.setHeader(request.getHeader());
         response.setData(responseData);

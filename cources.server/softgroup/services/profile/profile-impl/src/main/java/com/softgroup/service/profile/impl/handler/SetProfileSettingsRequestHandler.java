@@ -6,31 +6,29 @@ import com.softgroup.common.protocol.Response;
 import com.softgroup.common.protocol.ResponseStatus;
 import com.softgroup.common.router.api.AbstractRequestHandler;
 import com.softgroup.services.profile.api.handler.ProfileHandler;
-import com.softgroup.services.profile.api.message.request.ContactsSyncRequestData;
-import com.softgroup.services.profile.api.message.response.ContactsSyncResponseData;
+import com.softgroup.services.profile.api.message.request.SetProfileSettingsRequestData;
+import com.softgroup.services.profile.api.message.response.SetProfileSettingsResponseData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import java.util.UUID;
 
 /**
  * Created by zigza on 28.02.2017.
  */
 @Component
-public class ContactsSyncRequestHandler extends AbstractRequestHandler<ContactsSyncRequestData,ContactsSyncResponseData> implements ProfileHandler {
+public class SetProfileSettingsRequestHandler extends AbstractRequestHandler<SetProfileSettingsRequestData,SetProfileSettingsResponseData> implements ProfileHandler {
     @Autowired
     UserProfileService userProfileService;
 
     @Override
     public String getName() {
-        return "contacts_sync";
+        return "set_profile_settings";
     }
 
-    public Response<ContactsSyncResponseData> process(Request<ContactsSyncRequestData> request) {
-        ContactsSyncRequestData requestData = request.getData();
+    public Response<SetProfileSettingsResponseData> process(Request<SetProfileSettingsRequestData> request) {
+        SetProfileSettingsRequestData requestData = request.getData();
 
-        ContactsSyncResponseData responseData = new ContactsSyncResponseData();
-        Response<ContactsSyncResponseData> response = new Response<ContactsSyncResponseData>();
+        SetProfileSettingsResponseData responseData = new SetProfileSettingsResponseData();
+        Response<SetProfileSettingsResponseData> response = new Response<SetProfileSettingsResponseData>();
 
         response.setHeader(request.getHeader());
         response.setData(responseData);

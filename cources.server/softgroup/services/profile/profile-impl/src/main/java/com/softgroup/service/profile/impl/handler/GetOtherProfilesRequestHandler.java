@@ -6,31 +6,29 @@ import com.softgroup.common.protocol.Response;
 import com.softgroup.common.protocol.ResponseStatus;
 import com.softgroup.common.router.api.AbstractRequestHandler;
 import com.softgroup.services.profile.api.handler.ProfileHandler;
-import com.softgroup.services.profile.api.message.request.ContactsSyncRequestData;
-import com.softgroup.services.profile.api.message.response.ContactsSyncResponseData;
+import com.softgroup.services.profile.api.message.request.GetOtherProfilesRequestData;
+import com.softgroup.services.profile.api.message.response.GetOtherProfilesResponseData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import java.util.UUID;
 
 /**
  * Created by zigza on 28.02.2017.
  */
 @Component
-public class ContactsSyncRequestHandler extends AbstractRequestHandler<ContactsSyncRequestData,ContactsSyncResponseData> implements ProfileHandler {
+public class GetOtherProfilesRequestHandler extends AbstractRequestHandler<GetOtherProfilesRequestData,GetOtherProfilesResponseData> implements ProfileHandler {
     @Autowired
     UserProfileService userProfileService;
 
     @Override
     public String getName() {
-        return "contacts_sync";
+        return "get_other_profiles";
     }
 
-    public Response<ContactsSyncResponseData> process(Request<ContactsSyncRequestData> request) {
-        ContactsSyncRequestData requestData = request.getData();
+    public Response<GetOtherProfilesResponseData> process(Request<GetOtherProfilesRequestData> request) {
+        GetOtherProfilesRequestData requestData = request.getData();
 
-        ContactsSyncResponseData responseData = new ContactsSyncResponseData();
-        Response<ContactsSyncResponseData> response = new Response<ContactsSyncResponseData>();
+        GetOtherProfilesResponseData responseData = new GetOtherProfilesResponseData();
+        Response<GetOtherProfilesResponseData> response = new Response<GetOtherProfilesResponseData>();
 
         response.setHeader(request.getHeader());
         response.setData(responseData);
