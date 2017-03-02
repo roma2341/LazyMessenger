@@ -43,7 +43,7 @@ public class RegistrationRequestHandler extends AbstractRequestHandler<Registrat
 
         ResponseStatus status = new ResponseStatus();
         status.setCode(200);
-        status.setMessage("OFIGENNO !!!!");
+        status.setMessage("OK");
 
         response.setStatus(status);
 

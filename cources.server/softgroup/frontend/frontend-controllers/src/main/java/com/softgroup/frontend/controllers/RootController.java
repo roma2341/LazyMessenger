@@ -45,8 +45,8 @@ public class RootController {
     JacksonDataMapper dataMapper;
 
     @RequestMapping(path = "/router")
-    public Response publicMessage(@RequestBody final String requestStr) {
+    public String publicMessage(@RequestBody final String requestStr) {
         CommonRequest request = dataMapper.mapData(requestStr.getBytes(StandardCharsets.UTF_8),CommonRequest.class);
-        return dispatcher.handle(request);
+        return dataMapper.dataToString(dispatcher.handle(request));
     }
 }
