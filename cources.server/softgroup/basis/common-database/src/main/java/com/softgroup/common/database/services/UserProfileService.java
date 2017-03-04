@@ -25,4 +25,8 @@ public class UserProfileService {
         return profile;
     }
 
+    public List<UserProfile> getContactProfiles(String userId){
+        return profileRepository.findContactProfiles(userId);
+    }
+
 }

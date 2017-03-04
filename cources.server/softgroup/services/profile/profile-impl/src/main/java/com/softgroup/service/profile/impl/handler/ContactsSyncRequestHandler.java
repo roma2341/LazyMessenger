@@ -1,5 +1,7 @@
 package com.softgroup.service.profile.impl.handler;
 
+import com.softgroup.common.database.model.UserContact;
+import com.softgroup.common.database.services.UserContactService;
 import com.softgroup.common.database.services.UserProfileService;
 import com.softgroup.common.protocol.Request;
 import com.softgroup.common.protocol.Response;
@@ -11,6 +13,7 @@ import com.softgroup.services.profile.api.message.response.ContactsSyncResponseD
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -19,7 +22,7 @@ import java.util.UUID;
 @Component
 public class ContactsSyncRequestHandler extends AbstractRequestHandler<ContactsSyncRequestData,ContactsSyncResponseData> implements ProfileHandler {
     @Autowired
-    UserProfileService userProfileService;
+    UserContactService contactService;
 
     @Override
     public String getName() {
@@ -28,6 +31,13 @@ public class ContactsSyncRequestHandler extends AbstractRequestHandler<ContactsS
 
     public Response<ContactsSyncResponseData> process(Request<ContactsSyncRequestData> request) {
         ContactsSyncRequestData requestData = request.getData();
+        List<UserContact> addedContacts = requestData.getAddedContacts();
+        List<UserContact> removedContracts = requestData.getRemovedContacts();
+
+        UserContactService.ContactsCommit contactsCommit = new UserContactService.ContactsCommit();
+        contactsCommit.setAddedContacts(addedContacts);
+        contactsCommit.setRemovedContacts(removedContracts);
+        contactService.syncContacts(contactsCommit);
 
         ContactsSyncResponseData responseData = new ContactsSyncResponseData();
         Response<ContactsSyncResponseData> response = new Response<ContactsSyncResponseData>();
@@ -37,7 +47,7 @@ public class ContactsSyncRequestHandler extends AbstractRequestHandler<ContactsS
 
         ResponseStatus status = new ResponseStatus();
         status.setCode(200);
-        status.setMessage("Rock !!!!");
+        status.setMessage("OK");
         response.setStatus(status);
 
         return response;
