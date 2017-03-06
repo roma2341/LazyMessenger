@@ -18,11 +18,17 @@ public class UserProfileService {
     public List<UserProfile> getProfiles() {
         return profileRepository.findAll();
     }
+    public List<UserProfile> getProfiles(List<String> ids){
+        return profileRepository.findByIdIn(ids);
+    }
 
     public UserProfile register(String phoneNumber, String localeCode, String deviceId) {
         UserProfile profile = new UserProfile(phoneNumber,localeCode,deviceId);
         profileRepository.save(profile);
         return profile;
+    }
+    public UserProfile getProfile(String id){
+        return profileRepository.findOne(id);
     }
 
     public List<UserProfile> getContactProfiles(String userId){

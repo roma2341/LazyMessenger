@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by zigza on 03.03.2017.
  */
-public interface UserContactRepository extends CrudRepository<UserContact,String> {
+public interface UserContactRepository extends CommonOperationsRepository<UserContact,String> {
     @Modifying
     @Query("delete from user_contact u where u in ?1")
     public List<UserContact> removeContactsInList(List<UserContact> contact);
