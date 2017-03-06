@@ -67,6 +67,12 @@
 
 			<dependency>
 				<groupId>com.softgroup</groupId>
+				<artifactId>common-profile</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.softgroup</groupId>
 				<artifactId>profile-impl</artifactId>
 				<version>${project.version}</version>
 			</dependency>

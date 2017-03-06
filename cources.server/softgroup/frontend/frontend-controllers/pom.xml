@@ -59,6 +59,11 @@
             <artifactId>common-database</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.softgroup</groupId>
+            <artifactId>profile-impl</artifactId>
+        </dependency>
+
 
     </dependencies>
 
