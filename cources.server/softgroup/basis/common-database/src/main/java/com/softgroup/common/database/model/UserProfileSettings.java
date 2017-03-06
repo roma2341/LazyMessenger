@@ -44,6 +44,7 @@ public class UserProfileSettings {
     String nickName;
     Integer age;
     String avatar;
+    @Column(length = 1)
     String sex;
 
     @Id

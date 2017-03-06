@@ -30,6 +30,7 @@ public class GetContactProfilesRequestHandler extends AbstractRequestHandler<Get
         GetContactProfilesRequestData requestData = request.getData();
 
         GetContactProfilesResponseData responseData = new GetContactProfilesResponseData();
+
         Response<GetContactProfilesResponseData> response = new Response<GetContactProfilesResponseData>();
 
         response.setHeader(request.getHeader());

@@ -1,5 +1,6 @@
 package com.softgroup.service.profile.impl.handler;
 
+import com.softgroup.authorithation.impl.services.AuthorizationService;
 import com.softgroup.common.database.services.UserProfileService;
 import com.softgroup.common.protocol.Request;
 import com.softgroup.common.protocol.Response;
@@ -19,6 +20,9 @@ public class GetMyProfileRequestHandler extends AbstractRequestHandler<GetMyProf
     @Autowired
     UserProfileService userProfileService;
 
+    @Autowired
+    AuthorizationService authServcie;
+
     @Override
     public String getName() {
         return "get_my_profile";
@@ -28,6 +32,8 @@ public class GetMyProfileRequestHandler extends AbstractRequestHandler<GetMyProf
         GetMyProfileRequestData requestData = request.getData();
 
         GetMyProfileResponseData responseData = new GetMyProfileResponseData();
+        responseData.setProfile(authServcie.getCurrentProfile());
+
         Response<GetMyProfileResponseData> response = new Response<GetMyProfileResponseData>();
 
         response.setHeader(request.getHeader());
