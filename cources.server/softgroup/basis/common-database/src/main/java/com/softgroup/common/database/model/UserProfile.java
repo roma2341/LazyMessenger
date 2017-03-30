@@ -44,6 +44,9 @@ public class UserProfile  {
     @Column(nullable = false)
     String deviceId;
 
+    @OneToMany(mappedBy="userProfile")
+    List<UserDevice> devices;
+
 
     public String getPhoneNumber() {
         return phoneNumber;
