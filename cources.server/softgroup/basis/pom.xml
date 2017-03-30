@@ -17,6 +17,7 @@
         <module>common-database</module>
         <module>common-utils</module>
         <module>common-configuration</module>
+        <module>common-cache</module>
 
     </modules>
 
