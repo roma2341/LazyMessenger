@@ -41,7 +41,6 @@ public class LoginRequestHandler extends AbstractRequestHandler<LoginRequestData
         String deviceToken = requestData.getDeviceToken();
         String token = tokenService.generateTokenByDeviceToken(deviceToken);
         responseData.setToken(token);
-        tokenService
 
         ActionHeader responseHeader = new ActionHeader();
         responseHeader.setCommand(requestHeader.getCommand());

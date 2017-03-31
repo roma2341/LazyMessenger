@@ -11,6 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 public interface UserDeviceRepository extends CommonOperationsRepository<UserDevice,String> {
     @Transactional
     @Modifying
-    @Query("update UserDevice d set d.updateDateTime = ?1 where d.id = ?2")
+    @Query("update user_device d set d.updateDateTime = ?1 where d.id = ?2")
     void setTokenUpdatingTime(Long time, String id);
 }
