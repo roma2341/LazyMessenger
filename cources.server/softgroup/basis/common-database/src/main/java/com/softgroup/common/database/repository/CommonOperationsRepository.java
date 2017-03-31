@@ -14,4 +14,5 @@ import java.util.List;
 public interface CommonOperationsRepository<T,ID extends Serializable> extends CrudRepository<T,ID> {
     public List<T> findAll();
     public List<T> findByIdIn(List<ID> items);
+    public T findById(ID id);
 }

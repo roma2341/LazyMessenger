@@ -16,4 +16,5 @@ public class AuthorizationService {
     public UserProfile getCurrentProfile(){
        return profileService.getProfile(TEST_USER_ID);
     }
+
 }
