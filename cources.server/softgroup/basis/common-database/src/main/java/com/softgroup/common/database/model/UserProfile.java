@@ -43,7 +43,6 @@ public class UserProfile  {
     @Column(nullable = false)
     String localeCode;
 
-
     public String getPhoneNumber() {
         return phoneNumber;
     }

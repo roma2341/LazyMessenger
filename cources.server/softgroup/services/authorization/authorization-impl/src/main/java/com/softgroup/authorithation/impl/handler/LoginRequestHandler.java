@@ -1,5 +1,6 @@
 package com.softgroup.authorithation.impl.handler;
 
+import com.softgroup.authorithation.impl.services.TokenService;
 import com.softgroup.common.protocol.ActionHeader;
 import com.softgroup.common.protocol.Request;
 import com.softgroup.common.protocol.Response;
@@ -8,6 +9,7 @@ import com.softgroup.common.router.api.AbstractRequestHandler;
 import com.softgroup.services.authorization.api.handler.AuthorizationHandler;
 import com.softgroup.services.authorization.api.message.request.LoginRequestData;
 import com.softgroup.services.authorization.api.message.response.LoginResponseData;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.UUID;
@@ -17,6 +19,8 @@ import java.util.UUID;
  */
 @Component
 public class LoginRequestHandler extends AbstractRequestHandler<LoginRequestData,LoginResponseData> implements AuthorizationHandler {
+    @Autowired
+    TokenService tokenService;
 
     @Override
     public String getName() {
@@ -33,6 +37,12 @@ public class LoginRequestHandler extends AbstractRequestHandler<LoginRequestData
         Response<LoginResponseData> response = new Response<LoginResponseData>();
 
         ActionHeader requestHeader = request.getHeader();
+
+        String deviceToken = requestData.getDeviceToken();
+        String token = tokenService.generateTokenByDeviceToken(deviceToken);
+        responseData.setToken(token);
+        tokenService
+
         ActionHeader responseHeader = new ActionHeader();
         responseHeader.setCommand(requestHeader.getCommand());
         responseHeader.setType(requestHeader.getType());
