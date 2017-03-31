@@ -17,7 +17,6 @@ public class UserProfile  {
     public UserProfile(String phoneNumber, String localeCode, String deviceId){
     this.phoneNumber = phoneNumber;
     this.localeCode = localeCode;
-    this.deviceId = deviceId;
     }
 
     @Id
@@ -32,17 +31,17 @@ public class UserProfile  {
     @OneToOne
     UserProfileStatus status;
 
-    @OneToMany(mappedBy="author",targetEntity = UserMessage.class)
+    @OneToMany(mappedBy="author")
     List<UserMessage> messages;
+
+    @OneToMany(mappedBy="owner")
+    List<UserDevice> devices;
 
     @Column(nullable = false)
     String phoneNumber;
 
     @Column(nullable = false)
     String localeCode;
-
-    @Column(nullable = false)
-    String deviceId;
 
 
     public String getPhoneNumber() {
@@ -59,14 +58,6 @@ public class UserProfile  {
 
     public void setLocaleCode(String localeCode) {
         this.localeCode = localeCode;
-    }
-
-    public String getDeviceId() {
-        return deviceId;
-    }
-
-    public void setDeviceId(String deviceId) {
-        this.deviceId = deviceId;
     }
 
     public String getId() {

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+   http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="1" author="zigzag" runOnChange="false">
+
+        <createTable tableName="user_profile_status">
+            <column name="id" type="varchar(255)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="active" type="bit(1)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="user_profile_settings">
+            <column name="id" type="varchar(255)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="age" type="int(11)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="avatar" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="language" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nick_name" type="varchar(255)">
+            </column>
+            <column name="sex" type="varchar(255)"></column>
+        </createTable>
+
+        <createTable tableName="user_profile">
+            <column name="id" type="varchar(255)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="phone_number" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="locale_code" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="settings" type="varchar(255)">
+                <constraints nullable="false" foreignKeyName="fk_profile_settings" references="user_profile_settings(id)"/>
+            </column>
+            <column name="status" type="varchar(255)">
+                <constraints nullable="false" foreignKeyName="fk_profile_status" references="user_profile_status(id)"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="user_device">
+            <column name="id" type="varchar(255)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="locale_code" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)"/>
+            <column name="update_date_time" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="owner" type="varchar(255)">
+                <constraints nullable="false" foreignKeyName="fk_device_profile" references="user_profile(id)"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="user_conversation_details">
+            <column name="id" type="varchar(255)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="user_conversation_settings">
+            <column name="id" type="varchar(255)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="user_conversation">
+            <column name="id" type="varchar(255)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="date_created" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="title" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type" type="int(11)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="conversation_details" type="varchar(255)">
+                <constraints nullable="false" foreignKeyName="fk_user_conversation_details" references="user_conversation_details(id)"/>
+            </column>
+            <column name="settings" type="varchar(255)">
+                <constraints nullable="false" foreignKeyName="fk_user_conversation_settings" references="user_conversation_settings(id)"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="user_message">
+            <column name="id" type="varchar(255)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="body" type="varchar(5000)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_sended" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_active" type="bit(1)"/>
+            <column name="author" type="varchar(255)">
+                <constraints nullable="false" foreignKeyName="fk_message_author" references="user_profile(id)"/>
+            </column>
+            <column name="conversation" type="varchar(255)">
+                <constraints nullable="false" foreignKeyName="fk_message_conversation" references="user_conversation(id)"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="user_conversation_participants">
+            <column name="id" type="varchar(255)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="user_conversation" type="varchar(255)">
+                <constraints nullable="false" foreignKeyName="fk_user_conversation_participants_conversation" references="user_conversation(id)"/>
+            </column>
+
+            <column name="participants" type="varchar(255)">
+                <constraints nullable="false" foreignKeyName="fk_user_conversation_participants_participant" references="user_profile(id)"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="user_contact">
+            <column name="id" type="varchar(255)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)"/>
+            <column name="phone_number" type="varchar(255)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="author" type="varchar(255)">
+                <constraints nullable="false" foreignKeyName="fk_contacts_author" references="user_profile(id)"/>
+            </column>
+        </createTable>
+
+    </changeSet>
+
+</databaseChangeLog>
