@@ -2,6 +2,7 @@ package com.softgroup.common.database.config;
 
 import liquibase.integration.spring.SpringLiquibase;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 
@@ -20,6 +21,9 @@ public class MigrationConfig {
     @Autowired
     DataSource dataSource;
 
+    @Value("${db.migrations.should_run}")
+    Boolean shouldRun;
+
     @Bean
     public SpringLiquibase liquibase() {
         SpringLiquibase liquibase = new SpringLiquibase();
@@ -30,7 +34,7 @@ public class MigrationConfig {
 //        liquibase.setIgnoreClasspathPrefix(true);
 //        ChangeLogHistoryServiceFactory.getInstance().reset();
         liquibase.setDropFirst(false);
-        liquibase.setShouldRun(true);
+        liquibase.setShouldRun(shouldRun);
         Map params = new HashMap<>();
         params.put("verbose", "true");
         liquibase.setChangeLogParameters(params);

@@ -42,19 +42,16 @@
             <column name="id" type="varchar(255)">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="device_id" type="varchar(255)">
-                <constraints nullable="false"/>
-            </column>
             <column name="phone_number" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
             <column name="locale_code" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="settings_id" type="varchar(255)">
+            <column name="settings" type="varchar(255)">
                 <constraints nullable="false" foreignKeyName="fk_profile_settings" references="user_profile_settings(id)"/>
             </column>
-            <column name="status_id" type="varchar(255)">
+            <column name="status" type="varchar(255)">
                 <constraints nullable="false" foreignKeyName="fk_profile_status" references="user_profile_status(id)"/>
             </column>
         </createTable>
@@ -66,13 +63,11 @@
             <column name="locale_code" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="device_id" type="varchar(255)">
-                <constraints nullable="false"/>
-            </column>
+            <column name="name" type="varchar(255)"/>
             <column name="update_date_time" type="datetime">
                 <constraints nullable="false"/>
             </column>
-            <column name="user_profile_id" type="varchar(255)">
+            <column name="owner" type="varchar(255)">
                 <constraints nullable="false" foreignKeyName="fk_device_profile" references="user_profile(id)"/>
             </column>
         </createTable>
