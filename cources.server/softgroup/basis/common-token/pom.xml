@@ -25,11 +25,6 @@
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-core</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.softgroup</groupId>
-            <artifactId>common-token-api</artifactId>
-            <version>${project.version}</version>
-        </dependency>
     </dependencies>
 
 

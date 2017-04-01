@@ -20,7 +20,7 @@ import java.util.UUID;
 /**
  * Created by zigza on 31.03.2017.
  */
-@Component
+@Component("jwtTokenService")
 public class JwtTokenService implements TokenService {
 
     private final static String signingKey = UUID.randomUUID().toString();

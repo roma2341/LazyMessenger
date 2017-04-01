@@ -11,6 +11,8 @@ import com.softgroup.services.authorization.api.handler.AuthorizationHandler;
 import com.softgroup.services.authorization.api.message.request.LoginRequestData;
 import com.softgroup.services.authorization.api.message.response.LoginResponseData;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
 import java.util.UUID;
@@ -21,6 +23,7 @@ import java.util.UUID;
 @Component
 public class LoginRequestHandler extends AbstractRequestHandler<LoginRequestData,LoginResponseData> implements AuthorizationHandler {
     @Autowired
+    @Qualifier("jwtTokenService")
     TokenService tokenService;
 
     @Autowired

@@ -263,6 +263,17 @@
 					<version>4.2.1.RELEASE</version>
 				</dependency>
 
+			<dependency>
+				<groupId>com.softgroup</groupId>
+				<artifactId>common-token-api</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.softgroup</groupId>
+				<artifactId>common-token-impl</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
 		</dependencies>
 	</dependencyManagement>
 

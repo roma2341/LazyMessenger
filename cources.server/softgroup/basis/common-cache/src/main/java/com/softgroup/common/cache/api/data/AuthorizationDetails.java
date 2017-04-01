@@ -49,9 +49,17 @@ public class AuthorizationDetails implements CacheData {
     public AuthorizationDetails() {
     }
 
+    public String getAuthCode() {
+        return authCode;
+    }
+
+    public void setAuthCode(String authCode) {
+        this.authCode = authCode;
+    }
     private String name;
     private String phoneNumber;
     private String localeCode;
     private String deviceId;
+    private String authCode;
 
 }

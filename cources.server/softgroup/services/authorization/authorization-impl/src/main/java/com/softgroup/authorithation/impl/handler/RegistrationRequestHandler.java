@@ -45,7 +45,7 @@ public class RegistrationRequestHandler extends AbstractRequestHandler<Registrat
         String localeCode = requestData.getLocaleCode();
         String deviceId = requestData.getDeviceId();
 
-        UserProfile profile = userProfileService.register(phone,localeCode,deviceId);
+       // UserProfile profile = userProfileService.register(phone,localeCode,deviceId);
 
         AuthorizationDetails authDetails = new AuthorizationDetails();
         authDetails.setDeviceId(deviceId);
@@ -53,6 +53,7 @@ public class RegistrationRequestHandler extends AbstractRequestHandler<Registrat
         authDetails.setName("noname");
         authDetails.setPhoneNumber(phone);
         authDetails.setRegistrationRequestUuid(registrationRequestUuid);
+        authDetails.setAuthCode(authCode);
         authorizationDetailsCacheService.put(authDetails);
 
 

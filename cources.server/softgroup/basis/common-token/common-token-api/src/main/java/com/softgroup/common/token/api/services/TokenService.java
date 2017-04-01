@@ -1,10 +1,12 @@
 package com.softgroup.common.token.api.services;
 
 import com.softgroup.common.token.api.exception.TokenException;
+import org.springframework.stereotype.Service;
 
 /**
  * Created by zigza on 31.03.2017.
  */
+@Service
 public interface TokenService {
     boolean validateSessionToken(String token);
     boolean validateDeviceToken(String token);

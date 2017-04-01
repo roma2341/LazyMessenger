@@ -9,10 +9,12 @@ import com.softgroup.common.cache.api.service.BasicCacheService;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import com.google.common.cache.LoadingCache;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by zigza on 30.03.2017.
  */
+@Component
 public class AuthorizationDetailsCacheService extends BasicCacheService<AuthorizationDetails> {
     private final static int CACHE_EXPIRATION_TIME_MINUTES = 5;
     private final static int CACHE_SIZE_MAX = 1000;
