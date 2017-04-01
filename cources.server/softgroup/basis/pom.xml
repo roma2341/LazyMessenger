@@ -18,6 +18,7 @@
         <module>common-utils</module>
         <module>common-configuration</module>
         <module>common-cache</module>
+        <module>common-token</module>
 
     </modules>
 
