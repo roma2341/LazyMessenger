@@ -1,11 +1,12 @@
 package com.softgroup.authorithation.impl.handler;
 
-import com.softgroup.authorithation.impl.services.TokenService;
+import com.softgroup.common.database.services.UserDeviceService;
 import com.softgroup.common.protocol.ActionHeader;
 import com.softgroup.common.protocol.Request;
 import com.softgroup.common.protocol.Response;
 import com.softgroup.common.protocol.ResponseStatus;
 import com.softgroup.common.router.api.AbstractRequestHandler;
+import com.softgroup.common.token.api.services.TokenService;
 import com.softgroup.services.authorization.api.handler.AuthorizationHandler;
 import com.softgroup.services.authorization.api.message.request.LoginRequestData;
 import com.softgroup.services.authorization.api.message.response.LoginResponseData;
@@ -21,6 +22,9 @@ import java.util.UUID;
 public class LoginRequestHandler extends AbstractRequestHandler<LoginRequestData,LoginResponseData> implements AuthorizationHandler {
     @Autowired
     TokenService tokenService;
+
+    @Autowired
+    UserDeviceService deviceService;
 
     @Override
     public String getName() {
@@ -39,8 +43,15 @@ public class LoginRequestHandler extends AbstractRequestHandler<LoginRequestData
         ActionHeader requestHeader = request.getHeader();
 
         String deviceToken = requestData.getDeviceToken();
-        String token = tokenService.generateTokenByDeviceToken(deviceToken);
-        responseData.setToken(token);
+
+        String profileId = tokenService.getUserId(deviceToken);
+        String deviceId = tokenService.getDeviceId(deviceToken);
+
+        String sessionToken = tokenService.generateSessionToken(profileId, deviceId);
+        responseData.setToken(sessionToken);
+
+        Long currentTime = tokenService.getCreationTime(sessionToken);
+        deviceService.setTokenUpdatingTime(currentTime,deviceId);
 
         ActionHeader responseHeader = new ActionHeader();
         responseHeader.setCommand(requestHeader.getCommand());
