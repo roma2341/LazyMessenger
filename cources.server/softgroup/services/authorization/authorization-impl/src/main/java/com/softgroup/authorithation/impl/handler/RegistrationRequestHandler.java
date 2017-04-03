@@ -1,8 +1,7 @@
 package com.softgroup.authorithation.impl.handler;
 
-import com.softgroup.common.cache.api.data.AuthorizationDetails;
-import com.softgroup.common.cache.impl.service.AuthorizationDetailsCacheService;
-import com.softgroup.common.database.model.UserProfile;
+import com.softgroup.common.cache.api.data.RegistrationRequestDetails;
+import com.softgroup.common.cache.impl.service.RegistrationRequestDetailsCacheService;
 import com.softgroup.services.authorization.api.handler.AuthorizationHandler;
 import com.softgroup.services.authorization.api.message.request.RegistrationRequestData;
 import com.softgroup.services.authorization.api.message.response.RegistrationResponseData;
@@ -25,7 +24,7 @@ public class RegistrationRequestHandler extends AbstractRequestHandler<Registrat
     UserProfileService userProfileService;
 
     @Autowired
-    AuthorizationDetailsCacheService authorizationDetailsCacheService;
+    RegistrationRequestDetailsCacheService registrationRequestDetailsCacheService;
 
     @Override
     public String getName() {
@@ -47,14 +46,14 @@ public class RegistrationRequestHandler extends AbstractRequestHandler<Registrat
 
        // UserProfile profile = userProfileService.register(phone,localeCode,deviceId);
 
-        AuthorizationDetails authDetails = new AuthorizationDetails();
+        RegistrationRequestDetails authDetails = new RegistrationRequestDetails();
         authDetails.setDeviceId(deviceId);
         authDetails.setLocaleCode(localeCode);
         authDetails.setName("noname");
         authDetails.setPhoneNumber(phone);
         authDetails.setRegistrationRequestUuid(registrationRequestUuid);
         authDetails.setAuthCode(authCode);
-        authorizationDetailsCacheService.put(authDetails);
+        registrationRequestDetailsCacheService.put(authDetails);
 
 
         RegistrationResponseData responseData = new RegistrationResponseData();

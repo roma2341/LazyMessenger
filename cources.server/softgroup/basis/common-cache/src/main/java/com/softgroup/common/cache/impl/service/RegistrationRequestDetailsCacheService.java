@@ -2,8 +2,7 @@ package com.softgroup.common.cache.impl.service;
 
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
-import com.softgroup.common.cache.api.data.AuthorizationDetails;
-import com.softgroup.common.cache.api.data.CacheData;
+import com.softgroup.common.cache.api.data.RegistrationRequestDetails;
 import com.softgroup.common.cache.api.service.BasicCacheService;
 
 import java.util.concurrent.ExecutionException;
@@ -15,25 +14,25 @@ import org.springframework.stereotype.Component;
  * Created by zigza on 30.03.2017.
  */
 @Component
-public class AuthorizationDetailsCacheService extends BasicCacheService<AuthorizationDetails> {
+public class RegistrationRequestDetailsCacheService extends BasicCacheService<RegistrationRequestDetails> {
     private final static int CACHE_EXPIRATION_TIME_MINUTES = 5;
     private final static int CACHE_SIZE_MAX = 1000;
 
-    private static LoadingCache<String, AuthorizationDetails> cache;
+    private static LoadingCache<String, RegistrationRequestDetails> cache;
 
     static {
         cache = CacheBuilder.newBuilder()
                 .maximumSize(CACHE_SIZE_MAX)
                 .expireAfterWrite(CACHE_EXPIRATION_TIME_MINUTES, TimeUnit.MINUTES)
-                .build(new CacheLoader<String, AuthorizationDetails>() {
-                    public AuthorizationDetails load(String key) {
+                .build(new CacheLoader<String, RegistrationRequestDetails>() {
+                    public RegistrationRequestDetails load(String key) {
                         return getFromCache(key);
                     }
                 });
     }
 
-    private static AuthorizationDetails getFromCache(String key) {
-        AuthorizationDetails details = null;
+    private static RegistrationRequestDetails getFromCache(String key) {
+        RegistrationRequestDetails details = null;
         try{
             details = cache.get(key);
         }
@@ -44,13 +43,13 @@ public class AuthorizationDetailsCacheService extends BasicCacheService<Authoriz
     }
 
     @Override
-    public void put(AuthorizationDetails authorizationDetails) {
-        cache.put(authorizationDetails.getRegistrationRequestUuid(),
-                authorizationDetails);
+    public void put(RegistrationRequestDetails registrationRequestDetails) {
+        cache.put(registrationRequestDetails.getRegistrationRequestUuid(),
+                registrationRequestDetails);
     }
 
     @Override
-    public AuthorizationDetails get(String key) throws ExecutionException {
+    public RegistrationRequestDetails get(String key) throws ExecutionException {
         return cache.get(key);
     }
 

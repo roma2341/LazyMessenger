@@ -19,6 +19,7 @@
         <module>common-configuration</module>
         <module>common-cache</module>
         <module>common-token</module>
+        <module>common-DTO</module>
 
     </modules>
 

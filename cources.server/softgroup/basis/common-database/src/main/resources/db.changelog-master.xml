@@ -48,6 +48,7 @@
             <column name="locale_code" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
+            <column name="user_name" type="varchar(255)"/>
             <column name="settings" type="varchar(255)">
                 <constraints nullable="false" foreignKeyName="fk_profile_settings" references="user_profile_settings(id)"/>
             </column>

@@ -13,6 +13,7 @@ public interface TokenService {
     String generateSessionToken(String userId, String deviceId);
     String generateDeviceToken(String userId, String deviceId);
     Long getCreationTime(String token) throws TokenException;
+    Long getExpirationTime(String token) throws TokenException;
     TokenType getTokenType(String token) throws TokenException;
     <T> T getParameter (String token, String key) throws TokenException;
     public String getDeviceId(String token);

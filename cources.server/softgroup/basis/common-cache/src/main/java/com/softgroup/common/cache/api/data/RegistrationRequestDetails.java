@@ -3,7 +3,7 @@ package com.softgroup.common.cache.api.data;
 /**
  * Created by zigza on 30.03.2017.
  */
-public class AuthorizationDetails implements CacheData {
+public class RegistrationRequestDetails implements CacheData {
     private String registrationRequestUuid;
 
     public String getRegistrationRequestUuid() {
@@ -46,7 +46,7 @@ public class AuthorizationDetails implements CacheData {
         this.deviceId = deviceId;
     }
 
-    public AuthorizationDetails() {
+    public RegistrationRequestDetails() {
     }
 
     public String getAuthCode() {

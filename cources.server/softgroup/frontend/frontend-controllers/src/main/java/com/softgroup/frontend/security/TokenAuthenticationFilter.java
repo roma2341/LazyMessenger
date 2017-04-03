@@ -1,5 +1,6 @@
 package com.softgroup.frontend.security;
 
+import com.softgroup.common.cache.api.data.RegistrationRequestDetails;
 import com.softgroup.common.database.model.UserDevice;
 import com.softgroup.common.database.services.UserDeviceService;
 import com.softgroup.common.protocol.RoutedData;
@@ -30,13 +31,11 @@ public class TokenAuthenticationFilter extends UsernamePasswordAuthenticationFil
     final String ROUTED_DATA_HEADER_NAME = "routed_data";
 
     @Autowired
-    TokenAuthentication tokenAuthentication;
-
-    @Autowired
     TokenService tokenService;
 
     @Autowired
     UserDeviceService deviceService;
+
 
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
@@ -45,6 +44,7 @@ public class TokenAuthenticationFilter extends UsernamePasswordAuthenticationFil
         HttpServletRequest request = (HttpServletRequest) req;
         String token = request.getHeader(TOKEN_HEADER_NAME);
         String deviceId = tokenService.getDeviceId(token);
+        String userId = tokenService.getUserId(token);
 
         UserDevice userDevice = deviceService.findUserDeviceById(deviceId);
 
@@ -53,6 +53,10 @@ public class TokenAuthenticationFilter extends UsernamePasswordAuthenticationFil
             RoutedData routedData = new RoutedData();
             request.getSession().setAttribute(ROUTED_DATA_HEADER_NAME, generateRoutedData(
                     request.getHeader(TOKEN_HEADER_NAME)));
+            TokenAuthentication tokenAuthentication = new TokenAuthentication(userId);
+            TokenAuthenticationDetails authDetails = new TokenAuthenticationDetails();
+            authDetails.setDeviceId(deviceId);
+            //tokenAuthentication.setDetails(authDetails);
             SecurityContextHolder.getContext().setAuthentication(tokenAuthentication);
             chain.doFilter(req, res);
             log.info("Request status: OK");

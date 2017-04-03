@@ -43,6 +43,17 @@ public class UserProfile  {
     @Column(nullable = false)
     String localeCode;
 
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    @Column(name="user_name")
+    String userName;
+
     public String getPhoneNumber() {
         return phoneNumber;
     }

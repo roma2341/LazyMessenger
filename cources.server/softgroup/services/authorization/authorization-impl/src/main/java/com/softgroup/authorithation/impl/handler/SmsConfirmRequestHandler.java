@@ -1,7 +1,7 @@
 package com.softgroup.authorithation.impl.handler;
 
-import com.softgroup.common.cache.api.data.AuthorizationDetails;
-import com.softgroup.common.cache.impl.service.AuthorizationDetailsCacheService;
+import com.softgroup.common.cache.api.data.RegistrationRequestDetails;
+import com.softgroup.common.cache.impl.service.RegistrationRequestDetailsCacheService;
 import com.softgroup.common.database.model.UserProfile;
 import com.softgroup.common.database.services.UserProfileService;
 import com.softgroup.common.token.api.services.TokenService;
@@ -30,7 +30,7 @@ public class SmsConfirmRequestHandler  extends AbstractRequestHandler<SmsConfirm
     }
 
     @Autowired
-    AuthorizationDetailsCacheService authorizationDetailsCacheService;
+    RegistrationRequestDetailsCacheService registrationRequestDetailsCacheService;
 
     static Logger log = LoggerFactory.getLogger(SmsConfirmRequestHandler.class);
 
@@ -47,9 +47,9 @@ public class SmsConfirmRequestHandler  extends AbstractRequestHandler<SmsConfirm
         SmsConfirmResponseData responseData = new  SmsConfirmResponseData();
 
         String registrationRequestUUID = request.getData().getRegistrationRequestUuid();
-        AuthorizationDetails details = null;
+        RegistrationRequestDetails details = null;
         try {
-            details = authorizationDetailsCacheService.get(registrationRequestUUID);
+            details = registrationRequestDetailsCacheService.get(registrationRequestUUID);
         }
         catch (ExecutionException e){
             e.printStackTrace();
