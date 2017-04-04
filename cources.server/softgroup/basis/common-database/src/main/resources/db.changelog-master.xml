@@ -24,17 +24,10 @@
             <column name="id" type="varchar(255)">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="age" type="int(11)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="avatar" type="varchar(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="language" type="varchar(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="nick_name" type="varchar(255)">
-            </column>
+            <column name="age" type="int(11)"/>
+            <column name="avatar" type="varchar(255)"/>
+            <column name="language" type="varchar(255)"/>
+            <column name="nick_name" type="varchar(255)"/>
             <column name="sex" type="varchar(255)"></column>
         </createTable>
 
@@ -42,12 +35,8 @@
             <column name="id" type="varchar(255)">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="phone_number" type="varchar(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="locale_code" type="varchar(255)">
-                <constraints nullable="false"/>
-            </column>
+            <column name="phone_number" type="varchar(255)"/>
+            <column name="locale_code" type="varchar(255)"/>
             <column name="user_name" type="varchar(255)"/>
             <column name="settings" type="varchar(255)">
                 <constraints nullable="false" foreignKeyName="fk_profile_settings" references="user_profile_settings(id)"/>
@@ -61,13 +50,9 @@
             <column name="id" type="varchar(255)">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="locale_code" type="varchar(255)">
-                <constraints nullable="false"/>
-            </column>
+            <column name="locale_code" type="varchar(255)"/>
             <column name="name" type="varchar(255)"/>
-            <column name="update_date_time" type="datetime">
-                <constraints nullable="false"/>
-            </column>
+            <column name="update_date_time" type="datetime"/>
             <column name="owner" type="varchar(255)">
                 <constraints nullable="false" foreignKeyName="fk_device_profile" references="user_profile(id)"/>
             </column>
@@ -89,15 +74,9 @@
             <column name="id" type="varchar(255)">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="date_created" type="datetime">
-                <constraints nullable="false"/>
-            </column>
-            <column name="title" type="varchar(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="type" type="int(11)">
-                <constraints nullable="false"/>
-            </column>
+            <column name="date_created" type="datetime"/>
+            <column name="title" type="varchar(255)"/>
+            <column name="type" type="int(11)"/>
             <column name="conversation_details" type="varchar(255)">
                 <constraints nullable="false" foreignKeyName="fk_user_conversation_details" references="user_conversation_details(id)"/>
             </column>
@@ -144,9 +123,7 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="name" type="varchar(255)"/>
-            <column name="phone_number" type="varchar(255)">
-                <constraints primaryKey="true" nullable="false"/>
-            </column>
+            <column name="phone_number" type="varchar(255)"/>
             <column name="author" type="varchar(255)">
                 <constraints nullable="false" foreignKeyName="fk_contacts_author" references="user_profile(id)"/>
             </column>

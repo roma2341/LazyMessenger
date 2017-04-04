@@ -30,7 +30,7 @@ public class TokenAuthenticationManager implements AuthenticationManager {
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-        try {
+        /*try {
             if (authentication instanceof TokenAuthentication) {
                 TokenAuthentication readyTokenAuthentication = processAuthentication((TokenAuthentication) authentication);
                 return readyTokenAuthentication;
@@ -42,7 +42,8 @@ public class TokenAuthenticationManager implements AuthenticationManager {
             if(ex instanceof AuthenticationServiceException)
                 throw ex;
         }
-        return null;
+        return null;*/
+        return authentication;
     }
 
     private TokenAuthentication processAuthentication(TokenAuthentication authentication) throws AuthenticationException {

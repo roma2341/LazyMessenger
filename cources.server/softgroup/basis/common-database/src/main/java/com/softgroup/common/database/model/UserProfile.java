@@ -28,6 +28,10 @@ public class UserProfile  {
     @OneToOne
     UserProfileSettings settings;
 
+    public void setStatus(UserProfileStatus status) {
+        this.status = status;
+    }
+
     @OneToOne
     UserProfileStatus status;
 
@@ -72,6 +76,10 @@ public class UserProfile  {
 
     public String getId() {
         return id;
+    }
+
+    public void setSettings(UserProfileSettings settings) {
+        this.settings = settings;
     }
 
     public UserProfileSettings getSettings() {

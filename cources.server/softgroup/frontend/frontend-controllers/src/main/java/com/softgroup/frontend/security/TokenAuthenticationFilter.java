@@ -27,7 +27,7 @@ import java.io.IOException;
 @Component
 public class TokenAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     static Logger log = LoggerFactory.getLogger(TokenAuthenticationFilter.class);
-    final String TOKEN_HEADER_NAME = "x-token";
+    final String TOKEN_HEADER_NAME = "session_token";
     final String ROUTED_DATA_HEADER_NAME = "routed_data";
 
     @Autowired

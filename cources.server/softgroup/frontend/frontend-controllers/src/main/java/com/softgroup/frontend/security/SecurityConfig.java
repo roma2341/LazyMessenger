@@ -14,7 +14,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
  */
 @Configuration
 @EnableWebSecurity
-@ComponentScan("com.softgroup.frontend.security")
+@ComponentScan("com.softgroup")
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
