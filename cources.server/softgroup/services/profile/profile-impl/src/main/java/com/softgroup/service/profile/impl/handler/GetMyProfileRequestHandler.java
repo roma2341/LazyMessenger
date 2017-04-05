@@ -6,6 +6,7 @@ import com.softgroup.common.protocol.Request;
 import com.softgroup.common.protocol.Response;
 import com.softgroup.common.protocol.ResponseStatus;
 import com.softgroup.common.router.api.AbstractRequestHandler;
+import com.softgroup.dto.services.DTOMapper;
 import com.softgroup.services.profile.api.handler.ProfileHandler;
 import com.softgroup.services.profile.api.message.request.GetMyProfileRequestData;
 import com.softgroup.services.profile.api.message.response.GetMyProfileResponseData;
@@ -22,6 +23,9 @@ public class GetMyProfileRequestHandler extends AbstractRequestHandler<GetMyProf
 
     @Autowired
     AuthorizationService authServcie;
+
+    @Autowired
+    DTOMapper dtoMapper;
 
     @Override
     public String getName() {
