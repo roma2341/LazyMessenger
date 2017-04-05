@@ -16,7 +16,6 @@ public class UserProfile  {
 
     public UserProfile(String phoneNumber, String localeCode, String deviceId){
     this.phoneNumber = phoneNumber;
-    this.localeCode = localeCode;
     }
 
     @Id
@@ -25,38 +24,45 @@ public class UserProfile  {
     @Column(name = "id", unique = true)
     private String id;
 
-    @OneToOne
-    UserProfileSettings settings;
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public UserProfileSettings getSettings() {
+        return settings;
+    }
+
+    public void setSettings(UserProfileSettings settings) {
+        this.settings = settings;
+    }
+
+    public UserProfileStatus getStatus() {
+        return status;
+    }
 
     public void setStatus(UserProfileStatus status) {
         this.status = status;
     }
 
-    @OneToOne
-    UserProfileStatus status;
-
-    @OneToMany(mappedBy="author")
-    List<UserMessage> messages;
-
-    @OneToMany(mappedBy="owner")
-    List<UserDevice> devices;
-
-    @Column(nullable = false)
-    String phoneNumber;
-
-    @Column(nullable = false)
-    String localeCode;
-
-    public String getUserName() {
-        return userName;
+    public List<UserMessage> getMessages() {
+        return messages;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setMessages(List<UserMessage> messages) {
+        this.messages = messages;
     }
 
-    @Column(name="user_name")
-    String userName;
+    public List<UserDevice> getDevices() {
+        return devices;
+    }
+
+    public void setDevices(List<UserDevice> devices) {
+        this.devices = devices;
+    }
 
     public String getPhoneNumber() {
         return phoneNumber;
@@ -66,31 +72,53 @@ public class UserProfile  {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getLocaleCode() {
-        return localeCode;
+    public String getName() {
+        return name;
     }
 
-    public void setLocaleCode(String localeCode) {
-        this.localeCode = localeCode;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getId() {
-        return id;
+    public Long getCreateDateTime() {
+        return createDateTime;
     }
 
-    public void setSettings(UserProfileSettings settings) {
-        this.settings = settings;
+    public void setCreateDateTime(Long createDateTime) {
+        this.createDateTime = createDateTime;
     }
 
-    public UserProfileSettings getSettings() {
-        return settings;
+    public Long getUpdateDateTime() {
+        return updateDateTime;
     }
 
-    public UserProfileStatus getStatus() {
-        return status;
+    public void setUpdateDateTime(Long updateDateTime) {
+        this.updateDateTime = updateDateTime;
     }
 
-    public List<UserMessage> getMessages() {
-        return null;
-    }
+    @OneToOne
+    UserProfileSettings settings;
+
+    @OneToOne
+    UserProfileStatus status;
+
+    @OneToMany(mappedBy="sender")
+    List<UserMessage> messages;
+
+    @OneToMany(mappedBy="owner")
+    List<UserDevice> devices;
+
+    @Column(nullable = false)
+    String phoneNumber;
+
+    @Column(name="name")
+    String name;
+
+    @ManyToMany
+    List<UserConversationDetails> conversations;
+
+    Long createDateTime;
+    Long updateDateTime;
+
+
 }

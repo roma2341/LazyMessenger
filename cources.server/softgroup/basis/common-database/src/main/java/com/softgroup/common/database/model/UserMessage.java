@@ -13,48 +13,121 @@ public class UserMessage{
     public UserMessage(){
 
     }
-    @Id
-    @GeneratedValue(generator = "system-uuid")
-    @GenericGenerator(name = "system-uuid", strategy = "uuid2")
-    @Column(name = "id", unique = true)
-    private String id;
-
-    String body;
-
-    @ManyToOne(targetEntity = UserProfile.class)
-    UserProfile author;
-
-    @ManyToOne(targetEntity = UserConversation.class)
-    UserConversation conversation;
-
-   private Long dateSended;
-   private boolean isActive;
 
     public String getId() {
         return id;
     }
 
-    public String getBody() {
-        return body;
-    }
-    public UserMessage(String body, UserProfile author){
-        this.body = body;
-        this.author = author;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public UserProfile getAuthor() {
-        return author;
+    public String getPayload() {
+        return payload;
+    }
+
+    public void setPayload(String payload) {
+        this.payload = payload;
+    }
+
+    public UserProfile getSender() {
+        return sender;
+    }
+
+    public void setSender(UserProfile sender) {
+        this.sender = sender;
+    }
+
+    public UserConversation getConversation() {
+        return conversation;
+    }
+
+    public void setConversation(UserConversation conversation) {
+        this.conversation = conversation;
+    }
+
+    public MessageType getMessageType() {
+        return messageType;
+    }
+
+    public void setMessageType(MessageType messageType) {
+        this.messageType = messageType;
     }
 
     public Long getDateSended() {
         return dateSended;
     }
 
-    public Boolean isActive() {
+    public void setDateSended(Long dateSended) {
+        this.dateSended = dateSended;
+    }
+
+    public boolean isActive() {
         return isActive;
     }
 
-    public UserConversation getConversation() {
-        return conversation;
+    public void setActive(boolean active) {
+        isActive = active;
+    }
+
+    public MessageStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(MessageStatus status) {
+        this.status = status;
+    }
+
+    public Long getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Long createTime) {
+        this.createTime = createTime;
+    }
+
+    public Long getServerReceiveTime() {
+        return serverReceiveTime;
+    }
+
+    public void setServerReceiveTime(Long serverReceiveTime) {
+        this.serverReceiveTime = serverReceiveTime;
+    }
+
+    public Long getMessageIndex() {
+        return messageIndex;
+    }
+
+    public void setMessageIndex(Long messageIndex) {
+        this.messageIndex = messageIndex;
+    }
+
+    @Id
+    @GeneratedValue(generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "uuid2")
+    @Column(name = "id", unique = true)
+    private String id;
+
+    String payload;
+
+    @ManyToOne(targetEntity = UserProfile.class)
+    UserProfile sender;
+
+    @ManyToOne(targetEntity = UserConversation.class)
+    UserConversation conversation;
+
+    MessageType messageType;
+
+   private Long dateSended;
+   private boolean isActive;
+
+   MessageStatus status;
+   Long createTime;
+   Long serverReceiveTime;
+   Long messageIndex;
+
+    public UserMessage(String payload, UserProfile sender){
+        this.payload = payload;
+        this.sender = sender;
     }
 }

@@ -49,7 +49,7 @@ public class TokenAuthentication implements Authentication {
     @Override
     public String getName() {
         if (principal != null)
-            return ((UserProfile) principal).getUserName();
+            return ((UserProfile) principal).getName();
         else
             return null;
     }

@@ -2,10 +2,8 @@ package com.softgroup.common.database.model;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by zigza on 20.02.2017.
@@ -24,4 +22,8 @@ public class UserConversationDetails{
     public String getId() {
         return id;
     }
+
+    @ManyToMany(mappedBy="conversations")
+    List<UserProfile> members;
+
 }

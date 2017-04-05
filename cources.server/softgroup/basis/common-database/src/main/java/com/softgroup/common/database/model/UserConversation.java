@@ -14,16 +14,78 @@ public class UserConversation {
     public UserConversation(){
 
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public List<UserMessage> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<UserMessage> messages) {
+        this.messages = messages;
+    }
+
+    public UserConversationDetails getConversationDetails() {
+        return conversationDetails;
+    }
+
+    public void setConversationDetails(UserConversationDetails conversationDetails) {
+        this.conversationDetails = conversationDetails;
+    }
+
+    public UserConversationSettings getSettings() {
+        return settings;
+    }
+
+    public void setSettings(UserConversationSettings settings) {
+        this.settings = settings;
+    }
+
+    public ConversationType getType() {
+        return type;
+    }
+
+    public void setType(ConversationType type) {
+        this.type = type;
+    }
+
+    public String getLogoImageUri() {
+        return logoImageUri;
+    }
+
+    public void setLogoImageUri(String logoImageUri) {
+        this.logoImageUri = logoImageUri;
+    }
+
+    public Long getLastMessageIndex() {
+        return lastMessageIndex;
+    }
+
+    public void setLastMessageIndex(Long lastMessageIndex) {
+        this.lastMessageIndex = lastMessageIndex;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     @Id
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid2")
     @Column(name = "id", unique = true)
     private String id;
 
-    @ManyToMany()
-    private List<UserProfile> participants;
-
-    @OneToMany(mappedBy = "author")
+    @OneToMany(mappedBy = "sender")
     private List<UserMessage> messages;
 
     @OneToOne()
@@ -32,41 +94,11 @@ public class UserConversation {
     @OneToOne()
     private UserConversationSettings settings;
 
-    private Long dateCreated;
 
-    private String title;
+   private ConversationType type;
+   private String logoImageUri;
+   private Long lastMessageIndex;
+   private String name;
 
-    ConversationType type;
 
-    public String getId() {
-        return id;
-    }
-
-    public List<UserProfile> getParticipants() {
-        return participants;
-    }
-
-    public Long getDateCreated() {
-        return dateCreated;
-    }
-
-    public List<UserMessage> getMessages() {
-        return messages;
-    }
-
-    public UserConversationDetails getDetails() {
-        return conversationDetails;
-    }
-
-    public UserConversationSettings getSettings() {
-        return settings;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public ConversationType getType() {
-        return type;
-    }
 }

@@ -15,9 +15,8 @@
             <column name="id" type="varchar(255)">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="active" type="bit(1)">
-                <constraints nullable="false"/>
-            </column>
+            <column name="is_online" type="bit(1)"/>
+            <column name="last_time_online" type="bit(1)"/>
         </createTable>
 
         <createTable tableName="user_profile_settings">
@@ -36,13 +35,15 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="phone_number" type="varchar(255)"/>
-            <column name="locale_code" type="varchar(255)"/>
-            <column name="user_name" type="varchar(255)"/>
-            <column name="settings" type="varchar(255)">
-                <constraints nullable="false" foreignKeyName="fk_profile_settings" references="user_profile_settings(id)"/>
-            </column>
+            <column name="create_date_time" type="long"/>
+            <column name="update_date_time" type="long"/>
+            <column name="avatar_uri" type="varchar(500)"/>
+            <column name="name" type="varchar(255)"/>
             <column name="status" type="varchar(255)">
                 <constraints nullable="false" foreignKeyName="fk_profile_status" references="user_profile_status(id)"/>
+            </column>
+            <column name="settings" type="varchar(255)">
+                <constraints nullable="false" foreignKeyName="fk_profile_settings" references="user_profile_settings(id)"/>
             </column>
         </createTable>
 
@@ -68,15 +69,19 @@
             <column name="id" type="varchar(255)">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
+            <column name="admin" type="varchar(255)">
+                <constraints foreignKeyName="fk_user_conversation_admin" references="user_profile(id)"/>
+            </column>
+            <column name="name" type="varchar(255)"/>
         </createTable>
 
         <createTable tableName="user_conversation">
             <column name="id" type="varchar(255)">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="date_created" type="long"/>
-            <column name="title" type="varchar(255)"/>
+            <column name="logo_image_uri" type="varchar(255)"/>
             <column name="type" type="int(11)"/>
+            <column name="last_message_index" type="long"/>
             <column name="conversation_details" type="varchar(255)">
                 <constraints nullable="false" foreignKeyName="fk_user_conversation_details" references="user_conversation_details(id)"/>
             </column>
@@ -89,19 +94,21 @@
             <column name="id" type="varchar(255)">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="body" type="varchar(5000)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="date_sended" type="long">
-                <constraints nullable="false"/>
-            </column>
-            <column name="is_active" type="bit(1)"/>
-            <column name="author" type="varchar(255)">
-                <constraints nullable="false" foreignKeyName="fk_message_author" references="user_profile(id)"/>
+            <column name="sender" type="varchar(255)">
+                <constraints nullable="false" foreignKeyName="fk_message_sender" references="user_profile(id)"/>
             </column>
             <column name="conversation" type="varchar(255)">
                 <constraints nullable="false" foreignKeyName="fk_message_conversation" references="user_conversation(id)"/>
             </column>
+            <column name="message_type" type="int(11)"/>
+            <column name="payload" type="varchar(5000)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="int(11)"/>
+            <column name="create_time" type="long"/>
+            <column name="server_receive_time" type="long"/>
+            <column name="message_index" type="long"/>
+
         </createTable>
 
         <createTable tableName="user_conversation_participants">

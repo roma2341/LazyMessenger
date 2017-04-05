@@ -15,9 +15,6 @@ public class UserProfileStatus  {
     public UserProfileStatus(){
 
     }
-    public Boolean isActive() {
-        return active;
-    }
 
     public String getId() {
         return id;
@@ -29,5 +26,26 @@ public class UserProfileStatus  {
     @Column(name = "id", unique = true)
     private String id;
 
-    boolean active;
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public boolean isOnline() {
+        return isOnline;
+    }
+
+    public void setOnline(boolean online) {
+        isOnline = online;
+    }
+
+    public Long getLastTimeOnline() {
+        return lastTimeOnline;
+    }
+
+    public void setLastTimeOnline(Long lastTimeOnline) {
+        this.lastTimeOnline = lastTimeOnline;
+    }
+
+    boolean isOnline;
+    Long lastTimeOnline;
 }
