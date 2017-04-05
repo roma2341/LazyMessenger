@@ -1,0 +1,22 @@
+<html ng-app="restApp">
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
+		<script src="common_protocol.js"></script>
+		<script src="rest_app.js"></script>
+		<style rel="style.css"></style>
+	</head>
+	<body ng-controller="MainController">
+			<label for="user_registration_form">Реєстрація</label>
+		<form action="" class="registration_form" id="user_registration_form" method="post" ng-submit="submitRegistrationForm($event)">
+			<input type="text" ng-model="registrationModel.phone_number" name="phone_number" placeholder="телефон">
+			<input type="text" ng-model="registrationModel.locale_code" name="locale_code" placeholder="locale code">
+			<input type="text" ng-model="registrationModel.device_id" name="device_id" placeholder="device id">
+			<input type="submit" value="Реєстрація"/>
+		</form>
+		<form action="" class="confirm_form" id="sms_confirm_form" method="post" ng-submit="submitSmsConfirmForm($event)">
+			<input type="text" ng-model="smsConfirmModel.auth_code" name="auth_code" placeholder="auth code">
+			<input type="text" ng-model="smsConfirmModel.registration_request_uuid" name="registration_request_uuid" placeholder="registration request uuid">
+			<input type="submit" value="Sms confirm"/>
+		</form>
+	</body>
+</html>

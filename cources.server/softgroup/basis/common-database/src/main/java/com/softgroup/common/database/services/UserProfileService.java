@@ -9,12 +9,14 @@ import com.softgroup.common.database.repository.UserProfileStatusRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 /**
  * Created by zigza on 20.02.2017.
  */
 @Service
+@Transactional
 public class UserProfileService {
     @Autowired
     UserProfileRepository profileRepository;

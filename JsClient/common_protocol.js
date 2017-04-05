@@ -1,0 +1,12 @@
+function RequestHeader(type,command){
+	this.type=type;
+	this.command=command;
+}
+function RegistrationRequestPayload(data){
+	this.header = new RequestHeader("authorization","register");
+	this.data = data;
+}
+function SmsConfirmRequestPayload(data){
+	this.header = new RequestHeader("authorization","sms_confirm");
+	this.data = data;
+}
