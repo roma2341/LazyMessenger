@@ -3,7 +3,6 @@ package com.softgroup.common.database.model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -33,7 +32,7 @@ public class UserConversation {
     @OneToOne()
     private UserConversationSettings settings;
 
-    private Date dateCreated;
+    private Long dateCreated;
 
     private String title;
 
@@ -47,7 +46,7 @@ public class UserConversation {
         return participants;
     }
 
-    public Date getDateCreated() {
+    public Long getDateCreated() {
         return dateCreated;
     }
 

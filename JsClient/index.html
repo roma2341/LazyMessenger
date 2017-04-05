@@ -13,10 +13,21 @@
 			<input type="text" ng-model="registrationModel.device_id" name="device_id" placeholder="device id">
 			<input type="submit" value="Реєстрація"/>
 		</form>
+		<label for="sms_confirm_form">Підтвердження по СМС</label>
 		<form action="" class="confirm_form" id="sms_confirm_form" method="post" ng-submit="submitSmsConfirmForm($event)">
 			<input type="text" ng-model="smsConfirmModel.auth_code" name="auth_code" placeholder="auth code">
 			<input type="text" ng-model="smsConfirmModel.registration_request_uuid" name="registration_request_uuid" placeholder="registration request uuid">
 			<input type="submit" value="Sms confirm"/>
 		</form>
+		<label for="messenger_login_form">Login</label>
+		<form action="" class="login_form" id="messenger_login_form" method="post" ng-submit="submitLoginForm($event)">
+			<input type="text" ng-model="userLoginModel.device_token" name="device_token" placeholder="device token"/>
+			<input type="submit" value="Увійти">
+		</form>
+		<label for=""></label>
+		<div class="session_token_wrapper">
+			Session token:{{session.token}}
+		</div>
+
 	</body>
 </html>

@@ -26,11 +26,11 @@ public class UserDevice {
         this.localeCode = localeCode;
     }
 
-    public Date getUpdateDateTime() {
+    public Long getUpdateDateTime() {
         return updateDateTime;
     }
 
-    public void setUpdateDateTime(Date updateDateTime) {
+    public void setUpdateDateTime(Long updateDateTime) {
         this.updateDateTime = updateDateTime;
     }
 
@@ -60,7 +60,7 @@ public class UserDevice {
     private String localeCode;
 
     @Column(name = "update_date_time")
-    private Date updateDateTime;
+    private Long updateDateTime;
 
     @ManyToOne
     private UserProfile owner;

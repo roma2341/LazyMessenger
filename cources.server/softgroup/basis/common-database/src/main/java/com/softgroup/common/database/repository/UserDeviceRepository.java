@@ -5,6 +5,8 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
+
 /**
  * Created by zigza on 30.03.2017.
  */

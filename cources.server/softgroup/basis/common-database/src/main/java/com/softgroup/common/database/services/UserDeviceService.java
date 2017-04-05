@@ -2,8 +2,10 @@ package com.softgroup.common.database.services;
 
 import com.softgroup.common.database.model.UserDevice;
 import com.softgroup.common.database.repository.UserDeviceRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
+
 
 /**
  * Author: vadym
@@ -12,6 +14,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class UserDeviceService {
+    @Autowired
 private UserDeviceRepository deviceRepository;
     public UserDevice insertUserDevice(UserDevice deviceEntity) {
         return deviceRepository.save(deviceEntity);

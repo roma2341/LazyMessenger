@@ -11,6 +11,9 @@ angular.module('restApp', [])
   $scope.b = 2;
   $scope.registrationModel = {};
   $scope.smsConfirmModel = {};
+  $scope.userLoginModel = {};
+  $scope.session = {};
+
   $scope.submitRegistrationForm = function(e){
   	var requestPayload = new RegistrationRequestPayload($scope.registrationModel);
   $http.post(getPublicUrl(),requestPayload)
@@ -30,12 +33,27 @@ angular.module('restApp', [])
   		$http.post(getPublicUrl(),requestPayload)
   .success(function(response, status, headers, config){
   	console.log('Registration success:'+JSON.stringify(response));
+  	$scope.userLoginModel.device_token = response.data.device_token;
   })
   .error(function(response, status, headers, config){
   	console.log('Registration failed:'+response);
   });
   e.preventDefault();
   }
+
+  $scope.submitLoginForm = function(e){
+  		var requestPayload = new LoginRequestPayload($scope.userLoginModel);
+  		$http.post(getPublicUrl(),requestPayload)
+  .success(function(response, status, headers, config){
+  	console.log('Registration success:'+JSON.stringify(response));
+  	 $scope.session.token = response.data.token;
+  })
+  .error(function(response, status, headers, config){
+  	console.log('Registration failed:'+response);
+  });
+  e.preventDefault();
+  }
+
 
 
 

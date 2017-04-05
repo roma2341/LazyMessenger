@@ -10,3 +10,7 @@ function SmsConfirmRequestPayload(data){
 	this.header = new RequestHeader("authorization","sms_confirm");
 	this.data = data;
 }
+function LoginRequestPayload(data){
+	this.header = new RequestHeader("authorization","login");
+	this.data = data;
+}

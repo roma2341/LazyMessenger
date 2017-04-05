@@ -27,7 +27,7 @@ public class UserMessage{
     @ManyToOne(targetEntity = UserConversation.class)
     UserConversation conversation;
 
-   private Date dateSended;
+   private Long dateSended;
    private boolean isActive;
 
     public String getId() {
@@ -46,7 +46,7 @@ public class UserMessage{
         return author;
     }
 
-    public Date getDateSended() {
+    public Long getDateSended() {
         return dateSended;
     }
 
