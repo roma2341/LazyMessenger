@@ -1,16 +1,20 @@
 package com.softgroup.service.profile.impl.handler;
 
-import com.softgroup.authorithation.impl.services.AuthorizationService;
+import com.softgroup.common.database.model.UserProfile;
 import com.softgroup.common.database.services.UserProfileService;
 import com.softgroup.common.protocol.Request;
 import com.softgroup.common.protocol.Response;
 import com.softgroup.common.protocol.ResponseStatus;
 import com.softgroup.common.router.api.AbstractRequestHandler;
+import com.softgroup.common.router.api.UserProfilePrincipal;
+import com.softgroup.dto.entities.UserProfileDTO;
 import com.softgroup.dto.services.DTOMapper;
 import com.softgroup.services.profile.api.handler.ProfileHandler;
 import com.softgroup.services.profile.api.message.request.GetMyProfileRequestData;
 import com.softgroup.services.profile.api.message.response.GetMyProfileResponseData;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
 /**
@@ -21,8 +25,6 @@ public class GetMyProfileRequestHandler extends AbstractRequestHandler<GetMyProf
     @Autowired
     UserProfileService userProfileService;
 
-    @Autowired
-    AuthorizationService authServcie;
 
     @Autowired
     DTOMapper dtoMapper;
@@ -36,7 +38,10 @@ public class GetMyProfileRequestHandler extends AbstractRequestHandler<GetMyProf
         GetMyProfileRequestData requestData = request.getData();
 
         GetMyProfileResponseData responseData = new GetMyProfileResponseData();
-        responseData.setProfile(authServcie.getCurrentProfile());
+        UserProfilePrincipal principal = (UserProfilePrincipal) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+       UserProfile profile =  userProfileService.getProfile(principal.getId());
+        UserProfileDTO profileDTO = dtoMapper.map(profile);
+        responseData.setProfile(profileDTO);
 
         Response<GetMyProfileResponseData> response = new Response<GetMyProfileResponseData>();
 
@@ -45,7 +50,7 @@ public class GetMyProfileRequestHandler extends AbstractRequestHandler<GetMyProf
 
         ResponseStatus status = new ResponseStatus();
         status.setCode(200);
-        status.setMessage("Rock !!!!");
+        status.setMessage("OK");
         response.setStatus(status);
 
         return response;

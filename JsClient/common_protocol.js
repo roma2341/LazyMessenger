@@ -14,7 +14,7 @@ function LoginRequestPayload(data){
 	this.header = new RequestHeader("authorization","login");
 	this.data = data;
 }
-function GetMyProfileRequestPayload(){
+function GetMyProfileRequestPayload(data){
 	this.header = new RequestHeader("profile","get_my_profile");
-	this.data = {};
+	this.data = data;
 }

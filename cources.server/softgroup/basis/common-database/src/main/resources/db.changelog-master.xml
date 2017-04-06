@@ -73,6 +73,7 @@
                 <constraints foreignKeyName="fk_user_conversation_admin" references="user_profile(id)"/>
             </column>
             <column name="name" type="varchar(255)"/>
+            <column name="logo_image_uri" type="varchar(255)"/>
         </createTable>
 
         <createTable tableName="user_conversation">

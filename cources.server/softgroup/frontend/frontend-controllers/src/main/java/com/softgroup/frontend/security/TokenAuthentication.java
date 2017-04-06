@@ -1,12 +1,9 @@
 package com.softgroup.frontend.security;
 
-import com.softgroup.common.database.model.UserProfile;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import com.softgroup.common.router.api.UserProfilePrincipal;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Component;
 
 import java.util.Collection;
 
@@ -14,18 +11,16 @@ import java.util.Collection;
  * Created by zigza on 31.03.2017.
  */
 public class TokenAuthentication implements Authentication {
-    private String token;
     private Collection<? extends GrantedAuthority> authorities;
     private boolean isAuthenticated;
-    private UserProfile principal;
+    private UserProfilePrincipal principal;
 
-    public TokenAuthentication(String token) {
-        this.token = token;
+    public TokenAuthentication(UserProfilePrincipal principal) {
+    this.principal = principal;
     }
 
-    public TokenAuthentication(String token, Collection<SimpleGrantedAuthority> authorities, boolean isAuthenticated,
-                               UserProfile principal) {
-        this.token = token;
+    public TokenAuthentication( Collection<SimpleGrantedAuthority> authorities, boolean isAuthenticated,
+                               UserProfilePrincipal principal) {
         this.authorities = authorities;
         this.isAuthenticated = isAuthenticated;
         this.principal = principal;
@@ -48,15 +43,12 @@ public class TokenAuthentication implements Authentication {
 
     @Override
     public String getName() {
-        if (principal != null)
-            return ((UserProfile) principal).getName();
-        else
-            return null;
+        return ((UserProfilePrincipal)principal).getName();
     }
 
     @Override
-    public Object getPrincipal() {
-        return principal;
+    public UserProfilePrincipal getPrincipal() {
+        return this.principal;
     }
 
     @Override
@@ -69,8 +61,6 @@ public class TokenAuthentication implements Authentication {
         isAuthenticated = b;
     }
 
-    public String getToken() {
-        return token;
-    }
+
 
 }

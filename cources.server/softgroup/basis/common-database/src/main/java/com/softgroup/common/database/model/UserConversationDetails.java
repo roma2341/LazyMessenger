@@ -23,7 +23,16 @@ public class UserConversationDetails{
         return id;
     }
 
+    public List<UserProfile> getMembers() {
+        return members;
+    }
+
+    public void setMembers(List<UserProfile> members) {
+        this.members = members;
+    }
+
     @ManyToMany(mappedBy="conversations")
     List<UserProfile> members;
+
 
 }

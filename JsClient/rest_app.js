@@ -4,8 +4,12 @@ angular.module('restApp', [])
 .controller('MainController', ['$scope','$http', function($scope,$http) {
   var SERVER_PREFIX = "http://localhost:8080";
   var PUBLIC_URL = "/messenger/public"
+  var PRIVATE_URL = "/messenger/private"
   var getPublicUrl = function(){
   	return SERVER_PREFIX + PUBLIC_URL;
+  }
+  var getPrivateUrl = function(){
+    return  SERVER_PREFIX + PRIVATE_URL;
   }
   $scope.a = 1;
   $scope.b = 2;
@@ -55,21 +59,33 @@ angular.module('restApp', [])
   e.preventDefault();
   }
 
+  var privatePostRequest = function(data){
+   return  $http({
+ method: 'POST',
+ url: getPrivateUrl(),
+ headers: {
+   'Content-Type': "application/json",
+   'token':$scope.session.token
+ },
+ data: data
+});
+  }
+
   $scope.getMyProfile = function(){
-    var requestPayload = new GetMyProfileRequestPayload();
-      $http.post(getPublicUrl(),requestPayload)
+    var header = {'token':$scope.session.token}
+    var requestPayload = new GetMyProfileRequestPayload('{}');
+     privatePostRequest(requestPayload)
   .success(function(response, status, headers, config){
     console.log('Registration success:'+JSON.stringify(response));
-     $scope.session.token = response.data.token;
   })
   .error(function(response, status, headers, config){
     console.log('Registration failed:'+response);
-    userProfileModel.phone_number = response.data.phone_number;
-    userProfileModel.create_date_time = response.data.create_date_time;
-    userProfileModel.update_date_time = response.data.update_date_time;
-    userProfileModel.avatar_uri = response.data.avatar_uri;
-    userProfileModel.name = response.data.name;
-    userProfileModel.status = response.data.status;
+    $scope.userProfileModel.phone_number = response.data.phone_number;
+    $scope.userProfileModel.create_date_time = response.data.create_date_time;
+    $scope.userProfileModel.update_date_time = response.data.update_date_time;
+    $scope.userProfileModel.avatar_uri = response.data.avatar_uri;
+    $scope.userProfileModel.name = response.data.name;
+    $scope.userProfileModel.status = response.data.status;
 
   });
   }

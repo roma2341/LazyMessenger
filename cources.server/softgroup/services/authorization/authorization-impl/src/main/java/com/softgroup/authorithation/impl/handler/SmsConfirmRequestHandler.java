@@ -68,7 +68,7 @@ public class SmsConfirmRequestHandler  extends AbstractRequestHandler<SmsConfirm
         }
 
         UserProfile profile = userProfileService.register(details.getPhoneNumber(),details.getLocaleCode(),details.getDeviceId());
-        String deviceToken = tokenService.generateDeviceToken(profile.getId(),details.getDeviceId());
+        String deviceToken = tokenService.generateDeviceToken(profile.getId(),details.getDeviceId(),profile.getName(),profile.getPhoneNumber());
 
         responseData.setDeviceToken(deviceToken);
         response.setData(responseData);

@@ -30,6 +30,8 @@ public class JwtTokenService implements TokenService {
     private final String USER_ID_PARAMETER_NAME="userId";
     private final String DEVICE_ID_PARAMETER_NAME="deviceId";
     private final String TOKEN_TYPE_PARAMETER_NAME="tokenType";
+    private final String PHONE_PARAMETER_NAME="phone";
+    private final String USER_NAME_PARAMETER_NAME="name";
 
 
     @Override
@@ -45,18 +47,22 @@ public class JwtTokenService implements TokenService {
     }
 
     @Override
-    public String generateSessionToken(String userId, String deviceId) {
+    public String generateSessionToken(String userId, String deviceId,String name,String phone) {
         HashMap<String,Object> claims = new HashMap();
         claims.put(USER_ID_PARAMETER_NAME, userId);
         claims.put(DEVICE_ID_PARAMETER_NAME, deviceId);
+        claims.put(USER_NAME_PARAMETER_NAME,name);
+        claims.put(PHONE_PARAMETER_NAME,phone);
         return generateToken(claims,TokenType.SESSION, SESSION_TOKEN_EXPIRATION_MS);
     }
 
     @Override
-    public String generateDeviceToken(String userId, String deviceId) {
+    public String generateDeviceToken(String userId, String deviceId,String name,String phone) {
         HashMap<String,Object> claims = new HashMap();
         claims.put(USER_ID_PARAMETER_NAME, userId);
         claims.put(DEVICE_ID_PARAMETER_NAME, deviceId);
+        claims.put(USER_NAME_PARAMETER_NAME,name);
+        claims.put(PHONE_PARAMETER_NAME,phone);
         return generateToken(claims,TokenType.DEVICE, DEVICE_TOKEN_EXPIRATION_MS);
     }
 
@@ -70,6 +76,18 @@ public class JwtTokenService implements TokenService {
     public String getUserId(String token) {
         if(token==null || token.length()<1) return null;
         return (String)getParameter(token,USER_ID_PARAMETER_NAME);
+    }
+
+    @Override
+    public String getName(String token) {
+        if(token==null || token.length()<1) return null;
+        return (String)getParameter(token,USER_NAME_PARAMETER_NAME);
+    }
+
+    @Override
+    public String getPhone(String token) {
+        if(token==null || token.length()<1) return null;
+        return (String)getParameter(token,PHONE_PARAMETER_NAME);
     }
 
     public Object getParameter(String token, String key) throws TokenException {

@@ -46,7 +46,7 @@ public class TokenAuthenticationManager implements AuthenticationManager {
         return authentication;
     }
 
-    private TokenAuthentication processAuthentication(TokenAuthentication authentication) throws AuthenticationException {
+   /* private TokenAuthentication processAuthentication(TokenAuthentication authentication) throws AuthenticationException {
         String token = authentication.getToken();
         DefaultClaims tokenClaims = tokenService.getClaims(token);
         if(!tokenService.validateSessionToken(token))
@@ -66,10 +66,10 @@ public class TokenAuthenticationManager implements AuthenticationManager {
         if (isUserEnabled) {//TODO user.isEnabled()
             Collection<SimpleGrantedAuthority> authorities = new ArrayList<SimpleGrantedAuthority>();//TODO user.getAuthorities();
             TokenAuthentication fullTokenAuthentication =
-                    new TokenAuthentication(authentication.getToken(), authorities, true, user);
+                    new TokenAuthentication( authorities, true, user);
             return fullTokenAuthentication;
         } else {
             throw new AuthenticationServiceException("User disabled");
         }
-    }
+    }*/
 }

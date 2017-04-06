@@ -24,4 +24,23 @@ public class UserConversationSettings {
     public String getId() {
         return id;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLogoImageUri() {
+        return logoImageUri;
+    }
+
+    public void setLogoImageUri(String logoImageUri) {
+        this.logoImageUri = logoImageUri;
+    }
+
+    private String name;
+    private String logoImageUri;
 }

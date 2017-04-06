@@ -1,9 +1,9 @@
 package com.softgroup.frontend.security;
 
-import com.softgroup.common.cache.api.data.RegistrationRequestDetails;
 import com.softgroup.common.database.model.UserDevice;
 import com.softgroup.common.database.services.UserDeviceService;
 import com.softgroup.common.protocol.RoutedData;
+import com.softgroup.common.router.api.UserProfilePrincipal;
 import com.softgroup.common.token.api.services.TokenService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,7 +27,7 @@ import java.io.IOException;
 @Component
 public class TokenAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     static Logger log = LoggerFactory.getLogger(TokenAuthenticationFilter.class);
-    final String TOKEN_HEADER_NAME = "session_token";
+    final String TOKEN_HEADER_NAME = "token";
     final String ROUTED_DATA_HEADER_NAME = "routed_data";
 
     @Autowired
@@ -45,6 +45,8 @@ public class TokenAuthenticationFilter extends UsernamePasswordAuthenticationFil
         String token = request.getHeader(TOKEN_HEADER_NAME);
         String deviceId = tokenService.getDeviceId(token);
         String userId = tokenService.getUserId(token);
+        String name = tokenService.getName(token);
+        String phone = tokenService.getPhone(token);
 
         UserDevice userDevice = deviceService.findUserDeviceById(deviceId);
 
@@ -53,7 +55,13 @@ public class TokenAuthenticationFilter extends UsernamePasswordAuthenticationFil
             RoutedData routedData = new RoutedData();
             request.getSession().setAttribute(ROUTED_DATA_HEADER_NAME, generateRoutedData(
                     request.getHeader(TOKEN_HEADER_NAME)));
-            TokenAuthentication tokenAuthentication = new TokenAuthentication(userId);
+            UserProfilePrincipal userPrinciple = new UserProfilePrincipal();
+            userPrinciple.setUserId(userId);
+            userPrinciple.setDeviceId(deviceId);
+            userPrinciple.setName(name);
+            userPrinciple.setPhoneNumber(phone);
+
+            TokenAuthentication tokenAuthentication = new TokenAuthentication(userPrinciple);
             TokenAuthenticationDetails authDetails = new TokenAuthenticationDetails();
             authDetails.setDeviceId(deviceId);
             //tokenAuthentication.setDetails(authDetails);

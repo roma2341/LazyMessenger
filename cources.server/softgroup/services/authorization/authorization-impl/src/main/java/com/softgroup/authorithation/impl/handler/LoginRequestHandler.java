@@ -49,8 +49,10 @@ public class LoginRequestHandler extends AbstractRequestHandler<LoginRequestData
 
         String profileId = tokenService.getUserId(deviceToken);
         String deviceId = tokenService.getDeviceId(deviceToken);
+        String phone = tokenService.getPhone(deviceToken);
+        String name = tokenService.getName(deviceToken);
 
-        String sessionToken = tokenService.generateSessionToken(profileId, deviceId);
+        String sessionToken = tokenService.generateSessionToken(profileId, deviceId,name,phone);
         responseData.setToken(sessionToken);
 
         Long currentTime = tokenService.getCreationTime(sessionToken);
