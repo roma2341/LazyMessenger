@@ -1,6 +1,7 @@
 <html ng-app="restApp">
 <head>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
+	<script src="lib/ngsnake.js"></script>
 	<script src="common_protocol.js"></script>
 	<script src="rest_app.js"></script>
 	<link rel="stylesheet" type="text/css" href="style.css">
@@ -10,20 +11,20 @@
 	<div class="authorization_block">
 		<label for="user_registration_form">Реєстрація</label>
 		<form action="" class="registration_form" id="user_registration_form" method="post" ng-submit="submitRegistrationForm($event)">
-			<input type="text" ng-model="registrationModel.phone_number" name="phone_number" placeholder="телефон">
-			<input type="text" ng-model="registrationModel.locale_code" name="locale_code" placeholder="locale code">
-			<input type="text" ng-model="registrationModel.device_id" name="device_id" placeholder="device id">
+			<input type="text" ng-model="registrationModel.phoneNumber" name="phone_number" placeholder="телефон">
+			<input type="text" ng-model="registrationModel.localeCode" name="locale_code" placeholder="locale code">
+			<input type="text" ng-model="registrationModel.deviceId" name="device_id" placeholder="device id">
 			<input type="submit" value="Реєстрація"/>
 		</form>
 		<label for="sms_confirm_form">Підтвердження по СМС</label>
 		<form action="" class="confirm_form" id="sms_confirm_form" method="post" ng-submit="submitSmsConfirmForm($event)">
-			<input type="text" ng-model="smsConfirmModel.auth_code" name="auth_code" placeholder="auth code">
-			<input type="text" ng-model="smsConfirmModel.registration_request_uuid" name="registration_request_uuid" placeholder="registration request uuid">
+			<input type="text" ng-model="smsConfirmModel.authCode" name="auth_code" placeholder="auth code">
+			<input type="text" ng-model="smsConfirmModel.registrationRequestUuid" name="registration_request_uuid" placeholder="registration request uuid">
 			<input type="submit" value="Sms confirm"/>
 		</form>
 		<label for="messenger_login_form">Login</label>
 		<form action="" class="login_form" id="messenger_login_form" method="post" ng-submit="submitLoginForm($event)">
-			<input type="text" ng-model="userLoginModel.device_token" name="device_token" placeholder="device token"/>
+			<input type="text" ng-model="userLoginModel.deviceToken" name="device_token" placeholder="device token"/>
 			<input type="submit" value="Увійти">
 		</form>
 		<label for=""></label>
@@ -33,10 +34,10 @@
 	</div>
 	<div class="profile_block">
 			<label for="">get my profile</label>
-			<input type="text" ng-model="userProfileModel.phone_number" placeholder="phone"/>
-			<input type="text" ng-model="userProfileModel.create_date_time" placeholder="create time"/>
-			<input type="text" ng-model="userProfileModel.update_date_time" placeholder="update time"/>
-			<input type="text" ng-model="userProfileModel.avatar_uri" placeholder="avatar uri"/>
+			<input type="text" ng-model="userProfileModel.phoneNumber" placeholder="phone"/>
+			<input type="text" ng-model="userProfileModel.createDateTime" placeholder="create time"/>
+			<input type="text" ng-model="userProfileModel.updateDateTime" placeholder="update time"/>
+			<input type="text" ng-model="userProfileModel.avatarUri" placeholder="avatar uri"/>
 			<input type="text" ng-model="userProfileModel.name" placeholder="name"/>
 			<input type="text" ng-model="userProfileModel.status" placeholder="status"/>
 			<input type="submit" value="Отримати" ng-click="getMyProfile()">

@@ -14,5 +14,6 @@ public interface UserDeviceRepository extends CommonOperationsRepository<UserDev
     @Transactional
     @Modifying
     @Query("update user_device d set d.updateDateTime = ?1 where d.id = ?2")
-    void setTokenUpdatingTime(Long time, String id);
+
+    public void setTokenUpdatingTime(Long time, String id);
 }

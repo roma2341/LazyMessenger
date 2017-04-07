@@ -1,4 +1,7 @@
-angular.module('restApp', [])
+angular.module('restApp', ['ngSnakeCamel'])
+.config(function(snakeCamelProvider) {
+    snakeCamelProvider.setHttpTransform(true);
+  })
 // Unlike BadController, GoodController1 and GoodController2 will not fail to be instantiated,
 // due to using explicit annotations using the array style and $inject property, respectively.
 .controller('MainController', ['$scope','$http', function($scope,$http) {
@@ -24,8 +27,8 @@ angular.module('restApp', [])
   $http.post(getPublicUrl(),requestPayload)
   .success(function(response, status, headers, config){
   	console.log('Registration success:'+JSON.stringify(response));
-  	$scope.smsConfirmModel.auth_code = response.data.auth_code;
-  	$scope.smsConfirmModel.registration_request_uuid = response.data.registration_request_uuid;
+  	$scope.smsConfirmModel.authCode = response.data.authCode;
+  	$scope.smsConfirmModel.registrationRequestUuid = response.data.registrationRequestUuid;
   })
   .error(function(response, status, headers, config){
   	console.log('Registration failed:'+response);
@@ -38,7 +41,7 @@ angular.module('restApp', [])
   		$http.post(getPublicUrl(),requestPayload)
   .success(function(response, status, headers, config){
   	console.log('Registration success:'+JSON.stringify(response));
-  	$scope.userLoginModel.device_token = response.data.device_token;
+  	$scope.userLoginModel.deviceToken = response.data.deviceToken;
   })
   .error(function(response, status, headers, config){
   	console.log('Registration failed:'+response);
@@ -63,8 +66,10 @@ angular.module('restApp', [])
    return  $http({
  method: 'POST',
  url: getPrivateUrl(),
+ dataType: 'json',
  headers: {
-   'Content-Type': "application/json",
+  'Accept': 'application/json; charset=utf-8',
+   'Content-Type': "application/json; charset=utf-8",
    'token':$scope.session.token
  },
  data: data
@@ -73,20 +78,20 @@ angular.module('restApp', [])
 
   $scope.getMyProfile = function(){
     var header = {'token':$scope.session.token}
-    var requestPayload = new GetMyProfileRequestPayload('{}');
+    var requestPayload = new GetMyProfileRequestPayload({});
      privatePostRequest(requestPayload)
+   // $http.post(getPrivateUrl(),requestPayload)
   .success(function(response, status, headers, config){
     console.log('Registration success:'+JSON.stringify(response));
   })
   .error(function(response, status, headers, config){
     console.log('Registration failed:'+response);
-    $scope.userProfileModel.phone_number = response.data.phone_number;
-    $scope.userProfileModel.create_date_time = response.data.create_date_time;
-    $scope.userProfileModel.update_date_time = response.data.update_date_time;
-    $scope.userProfileModel.avatar_uri = response.data.avatar_uri;
-    $scope.userProfileModel.name = response.data.name;
-    $scope.userProfileModel.status = response.data.status;
-
+    $scope.userProfileModel.phoneNumber    =  Response.data.phoneNumber; 
+    $scope.userProfileModel.createDateTime =  Response.data.createDateTime;     
+    $scope.userProfileModel.updateDateTime =  Response.data.updateDateTime;     
+    $scope.userProfileModel.avatarUri      =  Response.data.avatarUri;     
+    $scope.userProfileModel.name           =  Response.data.name;    
+    $scope.userProfileModel.status         =  Response.data.status;
   });
   }
 

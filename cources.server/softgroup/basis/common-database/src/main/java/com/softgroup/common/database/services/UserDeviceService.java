@@ -5,6 +5,7 @@ import com.softgroup.common.database.repository.UserDeviceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 
 /**
@@ -12,10 +13,11 @@ import org.springframework.stereotype.Component;
  * Date: 18.03.17
  * Time: 20:52
  */
-@Component
+@Service
 public class UserDeviceService {
     @Autowired
-private UserDeviceRepository deviceRepository;
+    private UserDeviceRepository deviceRepository;
+
     public UserDevice insertUserDevice(UserDevice deviceEntity) {
         return deviceRepository.save(deviceEntity);
     }

@@ -15,8 +15,8 @@
             <column name="id" type="varchar(255)">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="is_online" type="bit(1)"/>
-            <column name="last_time_online" type="bit(1)"/>
+            <column name="is_online" type="boolean"/>
+            <column name="last_time_online" type="boolean"/>
         </createTable>
 
         <createTable tableName="user_profile_settings">
@@ -55,7 +55,7 @@
             <column name="name" type="varchar(255)"/>
             <column name="update_date_time" type="long"/>
             <column name="owner" type="varchar(255)">
-                <constraints nullable="false" foreignKeyName="fk_device_profile" references="user_profile(id)"/>
+                <constraints foreignKeyName="fk_device_profile" references="user_profile(id)"/>
             </column>
         </createTable>
 

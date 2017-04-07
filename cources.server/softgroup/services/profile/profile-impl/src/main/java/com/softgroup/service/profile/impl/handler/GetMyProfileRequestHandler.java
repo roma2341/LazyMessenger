@@ -39,7 +39,7 @@ public class GetMyProfileRequestHandler extends AbstractRequestHandler<GetMyProf
 
         GetMyProfileResponseData responseData = new GetMyProfileResponseData();
         UserProfilePrincipal principal = (UserProfilePrincipal) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-       UserProfile profile =  userProfileService.getProfile(principal.getId());
+       UserProfile profile =  userProfileService.getProfile(principal.getUserId());
         UserProfileDTO profileDTO = dtoMapper.map(profile);
         responseData.setProfile(profileDTO);
 

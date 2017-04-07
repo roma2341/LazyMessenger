@@ -37,6 +37,8 @@ import java.util.Map;
         method = RequestMethod.POST)
 public class RootController {
     final String ROUTED_DATA_PARAM_NAME = "routed_data";
+    @Autowired
+    HttpSession session;
 
     @Autowired
     DispatcherRouter dispatcher;
@@ -49,7 +51,7 @@ public class RootController {
         return processRequest(request);
     }
     @RequestMapping(path = "/private")
-    public Response privateRequestMapper(@RequestBody final CommonRequest request,HttpSession session) {
+    public Response privateRequestMapper(@RequestBody final CommonRequest request) {
         request.setRoutedData((RoutedData)session.getAttribute(ROUTED_DATA_PARAM_NAME));
         return processRequest(request);
     }

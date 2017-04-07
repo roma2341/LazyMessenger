@@ -20,6 +20,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Date;
 
 /**
  * Created by zigza on 31.03.2017.
@@ -48,10 +49,8 @@ public class TokenAuthenticationFilter extends UsernamePasswordAuthenticationFil
         String name = tokenService.getName(token);
         String phone = tokenService.getPhone(token);
 
-        UserDevice userDevice = deviceService.findUserDeviceById(deviceId);
-
-
-        if (userDevice.getUpdateDateTime().equals(tokenService.getCreationTime(token)) ) {
+        Date expiredDate = new Date(tokenService.getExpirationTime(token));
+        if (expiredDate.after(new Date())) {
             RoutedData routedData = new RoutedData();
             request.getSession().setAttribute(ROUTED_DATA_HEADER_NAME, generateRoutedData(
                     request.getHeader(TOKEN_HEADER_NAME)));
@@ -66,12 +65,12 @@ public class TokenAuthenticationFilter extends UsernamePasswordAuthenticationFil
             authDetails.setDeviceId(deviceId);
             //tokenAuthentication.setDetails(authDetails);
             SecurityContextHolder.getContext().setAuthentication(tokenAuthentication);
-            chain.doFilter(req, res);
             log.info("Request status: OK");
         } else {
             ((HttpServletResponse) res).sendError(403);
             log.error("Request status: ERROR 403");
         }
+        chain.doFilter(req, res);
     }
 
     private RoutedData generateRoutedData(String token) {
