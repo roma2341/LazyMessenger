@@ -16,7 +16,7 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="is_online" type="boolean"/>
-            <column name="last_time_online" type="boolean"/>
+            <column name="last_time_online" type="long"/>
         </createTable>
 
         <createTable tableName="user_profile_settings">
@@ -34,7 +34,9 @@
             <column name="id" type="varchar(255)">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="phone_number" type="varchar(255)"/>
+            <column name="phone_number" type="varchar(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
             <column name="create_date_time" type="long"/>
             <column name="update_date_time" type="long"/>
             <column name="avatar_uri" type="varchar(500)"/>

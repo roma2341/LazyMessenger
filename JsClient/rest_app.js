@@ -83,15 +83,16 @@ angular.module('restApp', ['ngSnakeCamel'])
    // $http.post(getPrivateUrl(),requestPayload)
   .success(function(response, status, headers, config){
     console.log('Registration success:'+JSON.stringify(response));
+    $scope.userProfileModel.phoneNumber    =  response.data.profile.phoneNumber; 
+    $scope.userProfileModel.createDateTime =  response.data.profile.createDateTime;     
+    $scope.userProfileModel.updateDateTime =  response.data.profile.updateDateTime;     
+    $scope.userProfileModel.avatarUri      =  response.data.profile.avatarUri;     
+    $scope.userProfileModel.name           =  response.data.profile.name;    
+    $scope.userProfileModel.status         =  response.data.profile.status;
   })
   .error(function(response, status, headers, config){
     console.log('Registration failed:'+response);
-    $scope.userProfileModel.phoneNumber    =  Response.data.phoneNumber; 
-    $scope.userProfileModel.createDateTime =  Response.data.createDateTime;     
-    $scope.userProfileModel.updateDateTime =  Response.data.updateDateTime;     
-    $scope.userProfileModel.avatarUri      =  Response.data.avatarUri;     
-    $scope.userProfileModel.name           =  Response.data.name;    
-    $scope.userProfileModel.status         =  Response.data.status;
+
   });
   }
 

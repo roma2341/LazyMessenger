@@ -30,11 +30,11 @@ public class UserProfileStatus  {
         this.id = id;
     }
 
-    public boolean isOnline() {
+    public Boolean isOnline() {
         return isOnline;
     }
 
-    public void setOnline(boolean online) {
+    public void setOnline(Boolean online) {
         isOnline = online;
     }
 
@@ -46,6 +46,6 @@ public class UserProfileStatus  {
         this.lastTimeOnline = lastTimeOnline;
     }
 
-    boolean isOnline;
+    Boolean isOnline;
     Long lastTimeOnline;
 }

@@ -62,11 +62,11 @@ public class UserMessage{
         this.dateSended = dateSended;
     }
 
-    public boolean isActive() {
+    public Boolean isActive() {
         return isActive;
     }
 
-    public void setActive(boolean active) {
+    public void setActive(Boolean active) {
         isActive = active;
     }
 
@@ -119,7 +119,7 @@ public class UserMessage{
     MessageType messageType;
 
    private Long dateSended;
-   private boolean isActive;
+   private Boolean isActive;
 
    MessageStatus status;
    Long createTime;
