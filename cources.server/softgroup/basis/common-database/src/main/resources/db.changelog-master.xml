@@ -11,14 +11,6 @@
 
     <changeSet id="1" author="zigzag" runOnChange="false">
 
-        <createTable tableName="user_profile_status">
-            <column name="id" type="varchar(255)">
-                <constraints primaryKey="true" nullable="false"/>
-            </column>
-            <column name="is_online" type="boolean"/>
-            <column name="last_time_online" type="long"/>
-        </createTable>
-
         <createTable tableName="user_profile_settings">
             <column name="id" type="varchar(255)">
                 <constraints primaryKey="true" nullable="false"/>
@@ -41,9 +33,7 @@
             <column name="update_date_time" type="long"/>
             <column name="avatar_uri" type="varchar(500)"/>
             <column name="name" type="varchar(255)"/>
-            <column name="status" type="varchar(255)">
-                <constraints nullable="false" foreignKeyName="fk_profile_status" references="user_profile_status(id)"/>
-            </column>
+            <column name="status" type="varchar(1000)"></column>
             <column name="settings" type="varchar(255)">
                 <constraints nullable="false" foreignKeyName="fk_profile_settings" references="user_profile_settings(id)"/>
             </column>

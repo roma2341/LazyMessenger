@@ -40,14 +40,6 @@ public class UserProfile  {
         this.settings = settings;
     }
 
-    public UserProfileStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(UserProfileStatus status) {
-        this.status = status;
-    }
-
     public List<UserMessage> getMessages() {
         return messages;
     }
@@ -99,9 +91,6 @@ public class UserProfile  {
     @OneToOne
     UserProfileSettings settings;
 
-    @OneToOne
-    UserProfileStatus status;
-
     @OneToMany(mappedBy="sender")
     List<UserMessage> messages;
 
@@ -113,6 +102,8 @@ public class UserProfile  {
 
     @Column(name="name")
     String name;
+
+    String status;
 
     @ManyToMany
     List<UserConversationDetails> conversations;

@@ -4,8 +4,6 @@ package com.softgroup.dto.entities;
  * Created by zigza on 05.04.2017.
  */
 public class UserProfileDTO {
-  String phoneNumber;
-  Long createDateTime;
 
   public String getPhoneNumber() {
     return phoneNumber;
@@ -55,6 +53,8 @@ public class UserProfileDTO {
     this.status = status;
   }
 
+  String phoneNumber;
+  Long createDateTime;
   Long updateDateTme;
   String avatarUri;
   String name;
