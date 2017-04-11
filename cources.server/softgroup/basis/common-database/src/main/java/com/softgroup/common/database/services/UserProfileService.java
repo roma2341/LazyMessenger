@@ -3,11 +3,9 @@ package com.softgroup.common.database.services;
 import com.softgroup.common.database.model.UserDevice;
 import com.softgroup.common.database.model.UserProfile;
 import com.softgroup.common.database.model.UserProfileSettings;
-import com.softgroup.common.database.model.UserProfileStatus;
 import com.softgroup.common.database.repository.UserDeviceRepository;
 import com.softgroup.common.database.repository.UserProfileRepository;
 import com.softgroup.common.database.repository.UserProfileSettingsRepository;
-import com.softgroup.common.database.repository.UserProfileStatusRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,8 +22,6 @@ public class UserProfileService {
     @Autowired
     UserProfileRepository profileRepository;
     @Autowired
-    UserProfileStatusRepository userProfileStatusRepository;
-    @Autowired
     UserProfileSettingsRepository userProfileSettingsRepository;
     @Autowired
     UserDeviceRepository deviceRepository;
@@ -41,17 +37,15 @@ public class UserProfileService {
         UserProfile profile = new UserProfile(phoneNumber,localeCode,deviceId);
 
         UserProfileSettings settings = new UserProfileSettings();
-        UserProfileStatus status = new UserProfileStatus();
         List<UserDevice> devicesList = new ArrayList<UserDevice>();
         UserDevice initialDevice = new UserDevice();
         devicesList.add(initialDevice);
         initialDevice.setId(deviceId);
         settings = userProfileSettingsRepository.save(settings);
-        status = userProfileStatusRepository.save(status);
         devicesList = (List<UserDevice>)deviceRepository.save(devicesList);
         profile.setSettings(settings);
-        profile.setStatus(status);
         profile.setDevices(devicesList);
+        profile.setCreateDateTime(System.currentTimeMillis());
         profileRepository.save(profile);
 
         return profile;
